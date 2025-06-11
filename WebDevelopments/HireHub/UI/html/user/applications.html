@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Your Applications – HireHub</title>
+  </head>
+
+  <body class="bg-gray-50 text-gray-800 antialiased">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white shadow">
+      <div
+        class="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4"
+      >
+        <h2 class="text-2xl font-bold">HireHub</h2>
+        <nav class="space-x-6">
+          <a href="index.html" class="hover:underline">Home</a>
+          <a href="jobs.html" class="hover:underline">Jobs</a>
+          <a href="dashboard.html" class="hover:underline">Dashboard</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h1 class="mb-6 text-3xl font-semibold text-gray-800">
+        Your Applications
+      </h1>
+
+      <section class="space-y-6">
+        <!-- Application Card Template -->
+        <div
+          class="flex flex-col md:flex-row items-start md:items-center justify-between bg-white rounded-lg border border-gray-200 p-6 shadow hover:shadow-lg transition"
+        >
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-gray-900">
+              Frontend Developer
+            </h3>
+            <p class="mt-1 text-sm text-gray-600">ABC Tech Pvt Ltd</p>
+            <p class="mt-1 text-sm text-gray-600">📍 Pune</p>
+            <p class="mt-1 text-sm text-gray-600">
+              Applied on: <span class="font-medium">2025-06-10</span>
+            </p>
+          </div>
+          <div class="mt-4 md:mt-0 flex items-center space-x-4">
+            <span
+              class="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800"
+            >
+              Pending
+            </span>
+            <button
+              class="rounded-md bg-blue-500 px-4 py-2 text-white font-medium hover:bg-blue-700 transition"
+              onclick="window.location.href='job.html?id=1'"
+            >
+              View Job
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="flex flex-col md:flex-row items-start md:items-center justify-between bg-white rounded-lg border border-gray-200 p-6 shadow hover:shadow-lg transition"
+        >
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-gray-900">
+              Backend Developer
+            </h3>
+            <p class="mt-1 text-sm text-gray-600">XYZ Solutions</p>
+            <p class="mt-1 text-sm text-gray-600">📍 Bangalore</p>
+            <p class="mt-1 text-sm text-gray-600">
+              Applied on: <span class="font-medium">2025-06-08</span>
+            </p>
+          </div>
+          <div class="mt-4 md:mt-0 flex items-center space-x-4">
+            <span
+              class="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800"
+            >
+              Accepted
+            </span>
+            <button
+              class="rounded-md bg-blue-500 px-4 py-2 text-white font-medium hover:bg-blue-700 transition"
+              onclick="window.location.href='job.html?id=2'"
+            >
+              View Job
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="flex flex-col md:flex-row items-start md:items-center justify-between bg-white rounded-lg border border-gray-200 p-6 shadow hover:shadow-lg transition"
+        >
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-gray-900">UI/UX Designer</h3>
+            <p class="mt-1 text-sm text-gray-600">Creative Minds</p>
+            <p class="mt-1 text-sm text-gray-600">📍 Mumbai</p>
+            <p class="mt-1 text-sm text-gray-600">
+              Applied on: <span class="font-medium">2025-06-05</span>
+            </p>
+          </div>
+          <div class="mt-4 md:mt-0 flex items-center space-x-4">
+            <span
+              class="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800"
+            >
+              Rejected
+            </span>
+            <button
+              class="rounded-md bg-blue-500 px-4 py-2 text-white font-medium hover:bg-blue-700 transition"
+              onclick="window.location.href='job.html?id=3'"
+            >
+              View Job
+            </button>
+          </div>
+        </div>
+
+        <!-- Add more application cards here as needed -->
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white">
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-start md:items-center justify-between"
+      >
+        <div class="mb-6 md:mb-0">
+          <h4 class="text-lg font-semibold">Contact Info</h4>
+          <p>Email: yashodip@gmail.com</p>
+          <p>Phone: +91-7666556478</p>
+        </div>
+        <div class="text-sm">
+          <p>&copy; 2025 HireHub</p>
+          <p>Owned by Yashodip Thakare</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

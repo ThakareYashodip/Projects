@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Apply – HireHub</title>
+  </head>
+
+  <body class="bg-gray-50 text-gray-800 antialiased">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white shadow">
+      <div
+        class="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4"
+      >
+        <h2 class="text-2xl font-bold">HireHub</h2>
+        <nav class="space-x-6">
+          <a href="../index.html" class="hover:underline">Home</a>
+          <a href="jobs.html" class="hover:underline">Jobs</a>
+          <a href="dashboard.html" class="hover:underline">Dashboard</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div
+        class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden"
+      >
+        <!-- Job Header -->
+        <div class="bg-blue-100 px-6 py-4 border-b border-blue-200">
+          <h1 class="text-2xl font-semibold text-gray-800">
+            Apply for “Frontend Developer”
+          </h1>
+          <p class="mt-1 text-gray-600">
+            ABC Tech Pvt Ltd • 📍 Pune • 💰 ₹5–8 LPA
+          </p>
+        </div>
+
+        <!-- Form Section -->
+        <section class="p-6">
+          <form class="space-y-6">
+            <!-- Cover Letter -->
+            <div>
+              <label
+                for="coverLetter"
+                class="block text-sm font-medium text-gray-700"
+                >Cover Letter</label
+              >
+              <textarea
+                id="coverLetter"
+                rows="5"
+                placeholder="Introduce yourself and explain why you’re a great fit..."
+                class="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-blue-400 focus:ring-2 transition"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Resume Upload -->
+            <div>
+              <label
+                for="resume"
+                class="block text-sm font-medium text-gray-700"
+                >Upload Resume</label
+              >
+              <p class="text-xs text-gray-500 mb-2">
+                Allowed file types: PDF, DOCX. Max size: 2MB.
+              </p>
+              <input
+                type="file"
+                id="resume"
+                accept=".pdf,.docx"
+                class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 focus:outline-none transition"
+                required
+              />
+            </div>
+
+            <!-- Expected Salary -->
+            <div>
+              <label
+                for="salary"
+                class="block text-sm font-medium text-gray-700"
+                >Expected Salary (optional)</label
+              >
+              <input
+                type="text"
+                id="salary"
+                placeholder="e.g. ₹5–8 LPA"
+                class="mt-2 w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-400 focus:ring-2 transition"
+              />
+            </div>
+
+            <!-- Submit Button -->
+            <div>
+              <button
+                type="submit"
+                class="w-full flex justify-center items-center space-x-2 rounded-md bg-blue-600 px-6 py-3 text-white font-semibold shadow hover:bg-blue-700 transition"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 12h14M12 5l7 7-7 7"
+                  />
+                </svg>
+                <span>Submit Application</span>
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white">
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-start md:items-center justify-between"
+      >
+        <div class="mb-6 md:mb-0">
+          <h4 class="text-lg font-semibold">Contact Info</h4>
+          <p>Email: yashodip@gmail.com</p>
+          <p>Phone: +91-7666556478</p>
+        </div>
+        <div class="text-sm">
+          <p>&copy; 2025 HireHub</p>
+          <p>Owned by Yashodip Thakare</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
