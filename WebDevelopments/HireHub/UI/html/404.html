@@ -6,16 +6,21 @@
     <title>404 Not Found | HireHub</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-gray-100 text-gray-800 flex items-center justify-center h-screen">
+  <body
+    class="bg-gray-100 text-gray-800 flex items-center justify-center h-screen"
+  >
     <div class="text-center p-8">
       <h1 class="text-6xl font-bold text-blue-600">404</h1>
-      <p class="text-xl mt-4">Oops! The page you’re looking for doesn’t exist.</p>
+      <p class="text-xl mt-4">
+        Oops! The page you’re looking for doesn’t exist.
+      </p>
       <p class="text-gray-500 mt-2">It might have been moved or deleted.</p>
-      <a
-        href="index.html"
-        class="inline-block mt-6 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-        >Return Home</a
+      <button
+        class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+        onclick="history.back()"
       >
+        Return Back
+      </button>
     </div>
   </body>
 </html>

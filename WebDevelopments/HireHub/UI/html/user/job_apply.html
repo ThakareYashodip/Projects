@@ -40,14 +40,18 @@
 
         <!-- Form Section -->
         <section class="p-6">
-          <form class="space-y-6">
+          <form
+            class="space-y-6"
+            onsubmit="event.preventDefault(); showSuccessModal();"
+          >
             <!-- Cover Letter -->
             <div>
               <label
                 for="coverLetter"
                 class="block text-sm font-medium text-gray-700"
-                >Cover Letter</label
               >
+                Cover Letter
+              </label>
               <textarea
                 id="coverLetter"
                 rows="5"
@@ -62,8 +66,9 @@
               <label
                 for="resume"
                 class="block text-sm font-medium text-gray-700"
-                >Upload Resume</label
               >
+                Upload Resume
+              </label>
               <p class="text-xs text-gray-500 mb-2">
                 Allowed file types: PDF, DOCX. Max size: 2MB.
               </p>
@@ -81,8 +86,9 @@
               <label
                 for="salary"
                 class="block text-sm font-medium text-gray-700"
-                >Expected Salary (optional)</label
               >
+                Expected Salary (optional)
+              </label>
               <input
                 type="text"
                 id="salary"
@@ -119,6 +125,26 @@
       </div>
     </main>
 
+    <!-- Modal -->
+    <div
+      id="successModal"
+      class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center hidden"
+    >
+      <div class="bg-white p-6 rounded shadow-md max-w-sm text-center">
+        <div class="text-green-500 text-3xl mb-2">✅</div>
+        <h2 class="text-xl font-semibold mb-2">Application Submitted!</h2>
+        <p class="text-gray-600 mb-4">
+          You’ve successfully applied to the job.
+        </p>
+        <button
+          onclick="document.getElementById('successModal').classList.add('hidden')"
+          class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-blue-600 text-white">
       <div
@@ -135,5 +161,15 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      function showSuccessModal() {
+        document.getElementById("successModal").classList.remove("hidden");
+
+        // setTimeout(() => {
+        //   window.location.href = "jobs.html"; // 👈 Change to your desired page
+        // }, 2000);
+      }
+    </script>
   </body>
 </html>

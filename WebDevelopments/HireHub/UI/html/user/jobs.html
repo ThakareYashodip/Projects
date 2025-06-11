@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,42 +8,52 @@
     <title>HireHub</title>
   </head>
   <body class="bg-gray-50 text-gray-800">
-
     <!-- Header -->
     <header class="bg-blue-600 text-white">
-      <div class="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
+      <div
+        class="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4"
+      >
         <h2 class="text-2xl font-bold">HireHub</h2>
         <nav class="space-x-6">
           <a href="../index.html" class="hover:underline">Home</a>
+          <a href="dashboard.html" class="hover:underline">Dashboard</a>
           <a href="#" class="hover:underline">About Us</a>
         </nav>
       </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col gap-6">
+    <main
+      class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col gap-6"
+    >
       <h1 class="font-serif text-4xl font-semibold">Job Listings</h1>
 
       <!-- Search & Filters -->
-      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div
+        class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
+      >
         <input
-          type="text" id="searchBox"
+          type="text"
+          id="searchBox"
           placeholder="Search jobs by title, company..."
           class="w-full md:w-1/2 rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
         />
         <div class="flex flex-wrap gap-4">
           <select
-            id="location" name="location"
+            id="location"
+            name="location"
             class="rounded-lg border border-gray-300 px-4 py-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
           >
             <option value="">Select Location</option>
             <option value="mumbai">Mumbai</option>
             <option value="pune">Pune</option>
             <option value="bangalore">Bangalore</option>
+            <option value="chennai">Chennai</option>
           </select>
 
           <select
-            id="jobType" name="jobType"
+            id="jobType"
+            name="jobType"
             class="rounded-lg border border-gray-300 px-4 py-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
           >
             <option value="">Job Type</option>
@@ -59,14 +69,21 @@
         <div class="max-h-[600px] overflow-y-auto pr-2">
           <ul class="space-y-6">
             <!-- Job Card Sample -->
-            <li class="flex flex-col md:flex-row items-start md:items-center justify-between rounded-xl border bg-white p-6 shadow-md hover:shadow-lg transition">
+            <li
+              class="flex flex-col md:flex-row items-start md:items-center justify-between rounded-xl border bg-white p-6 shadow-md hover:shadow-lg transition"
+            >
               <div>
-                <h3 class="text-xl font-semibold text-gray-800">Frontend Developer</h3>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Frontend Developer
+                </h3>
                 <p class="text-sm text-gray-600">ABC Tech Pvt Ltd</p>
                 <p class="text-sm text-gray-500">📍 Pune</p>
                 <p class="text-sm text-gray-500">💰 ₹5-8 LPA</p>
               </div>
-              <button class="mt-4 md:mt-0 rounded-md bg-blue-500 px-5 py-2 text-white font-medium hover:bg-blue-700 transition">
+              <button
+                class="mt-4 md:mt-0 rounded-md bg-blue-500 px-5 py-2 text-white font-medium hover:bg-blue-700 transition"
+                onclick="window.location.href='job_details.html'"
+              >
                 View Details
               </button>
             </li>
@@ -79,7 +96,9 @@
 
     <!-- Footer -->
     <footer class="bg-blue-600 text-white">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-start md:items-center justify-between">
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-start md:items-center justify-between"
+      >
         <div class="mb-6 md:mb-0">
           <h4 class="text-lg font-semibold">Contact Info</h4>
           <p>Email: yashodip@gmail.com</p>
@@ -91,6 +110,5 @@
         </div>
       </div>
     </footer>
-
   </body>
 </html>
