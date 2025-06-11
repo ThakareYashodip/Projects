@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>HireHub</title>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header
+      class="flex items-center justify-between bg-blue-600 px-20 py-4 text-white"
+    >
+      <h2 class="text-2xl font-bold">HireHub</h2>
+      <nav class="space-x-6">
+        <a href="#" class="hover:underline">Home</a>
+        <a href="#" class="hover:underline">About Us</a>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-col gap-6 px-16 py-16">
+      <h1 class="mb-4 font-serif text-4xl font-semibold">Job Listings</h1>
+
+      <!-- Search Input -->
+      <input
+        type="text"
+        id="searchBox"
+        placeholder="Search jobs by title, company..."
+        class="w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm transition duration-200 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+
+      <!-- Filters Section -->
+      <div class="flex flex-wrap gap-6">
+        <select
+          id="location"
+          name="location"
+          class="rounded-lg border border-gray-300 px-4 py-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        >
+          <option value="">Select Location</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="pune">Pune</option>
+          <option value="bangalore">Bangalore</option>
+        </select>
+
+        <select
+          id="jobType"
+          name="jobType"
+          class="rounded-lg border border-gray-300 px-4 py-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        >
+          <option value="">Job Type</option>
+          <option value="fulltime">Full-time</option>
+          <option value="parttime">Part-time</option>
+          <option value="internship">Internship</option>
+        </select>
+      </div>
+
+      <section class="my-8">
+        <div class="max-h-[600px] overflow-y-auto scroll-smooth pr-2">
+          <ul class="space-y-6">
+            <li
+              class="flex flex-col items-start justify-between rounded-xl border border-gray-200 bg-white p-6 shadow-md transition duration-200 hover:shadow-lg md:flex-row md:items-center"
+            >
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Frontend Developer
+                </h3>
+                <p class="text-sm text-gray-600">ABC Tech Pvt Ltd</p>
+                <p class="text-sm text-gray-500">📍 Pune</p>
+                <p class="text-sm text-gray-500">💰 ₹5-8 LPA</p>
+              </div>
+              <div class="mt-4 md:mt-0">
+                <button
+                  class="rounded-md bg-blue-500 px-5 py-2 font-medium text-white transition duration-200 hover:bg-blue-700"
+                >
+                  View Details
+                </button>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start justify-between rounded-xl border border-gray-200 bg-white p-6 shadow-md transition duration-200 hover:shadow-lg md:flex-row md:items-center"
+            >
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Backend Developer
+                </h3>
+                <p class="text-sm text-gray-600">XYZ Solutions</p>
+                <p class="text-sm text-gray-500">📍 Bangalore</p>
+                <p class="text-sm text-gray-500">💰 ₹6-9 LPA</p>
+              </div>
+              <div class="mt-4 md:mt-0">
+                <button
+                  class="rounded-md bg-blue-500 px-5 py-2 font-medium text-white transition duration-200 hover:bg-blue-700"
+                >
+                  View Details
+                </button>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start justify-between rounded-xl border border-gray-200 bg-white p-6 shadow-md transition duration-200 hover:shadow-lg md:flex-row md:items-center"
+            >
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  UI/UX Designer
+                </h3>
+                <p class="text-sm text-gray-600">Creative Minds</p>
+                <p class="text-sm text-gray-500">📍 Mumbai</p>
+                <p class="text-sm text-gray-500">💰 ₹4-6 LPA</p>
+              </div>
+              <div class="mt-4 md:mt-0">
+                <button
+                  class="rounded-md bg-blue-500 px-5 py-2 font-medium text-white transition duration-200 hover:bg-blue-700"
+                >
+                  View Details
+                </button>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start justify-between rounded-xl border border-gray-200 bg-white p-6 shadow-md transition duration-200 hover:shadow-lg md:flex-row md:items-center"
+            >
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  UI/UX Designer
+                </h3>
+                <p class="text-sm text-gray-600">Creative Minds</p>
+                <p class="text-sm text-gray-500">📍 Mumbai</p>
+                <p class="text-sm text-gray-500">💰 ₹4-6 LPA</p>
+              </div>
+              <div class="mt-4 md:mt-0">
+                <button
+                  class="rounded-md bg-blue-500 px-5 py-2 font-medium text-white transition duration-200 hover:bg-blue-700"
+                >
+                  View Details
+                </button>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start justify-between rounded-xl border border-gray-200 bg-white p-6 shadow-md transition duration-200 hover:shadow-lg md:flex-row md:items-center"
+            >
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  UI/UX Designer
+                </h3>
+                <p class="text-sm text-gray-600">Creative Minds</p>
+                <p class="text-sm text-gray-500">📍 Mumbai</p>
+                <p class="text-sm text-gray-500">💰 ₹4-6 LPA</p>
+              </div>
+              <div class="mt-4 md:mt-0">
+                <button
+                  class="rounded-md bg-blue-500 px-5 py-2 font-medium text-white transition duration-200 hover:bg-blue-700"
+                >
+                  View Details
+                </button>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start justify-between rounded-xl border border-gray-200 bg-white p-6 shadow-md transition duration-200 hover:shadow-lg md:flex-row md:items-center"
+            >
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  UI/UX Designer
+                </h3>
+                <p class="text-sm text-gray-600">Creative Minds</p>
+                <p class="text-sm text-gray-500">📍 Mumbai</p>
+                <p class="text-sm text-gray-500">💰 ₹4-6 LPA</p>
+              </div>
+              <div class="mt-4 md:mt-0">
+                <button
+                  class="rounded-md bg-blue-500 px-5 py-2 font-medium text-white transition duration-200 hover:bg-blue-700"
+                >
+                  View Details
+                </button>
+              </div>
+            </li>
+
+            <!-- More job cards can be added below using same structure -->
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 py-8 text-white">
+      <div
+        class="mx-auto flex max-w-5xl flex-col items-start justify-between px-4 md:flex-row md:items-center"
+      >
+        <div class="mb-6 md:mb-0">
+          <h4 class="text-lg font-semibold">Contact Info</h4>
+          <p>Email: yashodip@gmail.com</p>
+          <p>Phone: +91-7666556478</p>
+        </div>
+        <div class="text-sm">
+          <p>&copy; 2025 HireHub</p>
+          <p>Owned by Yashodip Thakare</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
