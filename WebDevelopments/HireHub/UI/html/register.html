@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HireHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header
+      class="flex items-center justify-between bg-blue-600 px-6 py-4 text-white"
+    >
+      <h2 class="text-2xl font-bold">HireHub</h2>
+      <nav class="space-x-6">
+        <a href="#" class="hover:underline">Home</a>
+        <a href="#" class="hover:underline">Login</a>
+        <a href="#" class="hover:underline">Register</a>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="mx-auto max-w-xl px-6 py-12">
+      <h1 class="mb-8 text-center text-4xl font-semibold text-blue-700">
+        Registration
+      </h1>
+
+      <section class="rounded-lg bg-white p-8 shadow-lg">
+        <form class="space-y-5">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700"
+              >Full Name</label
+            >
+            <input
+              type="text"
+              id="name"
+              required
+              class="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700"
+              >Email or Username</label
+            >
+            <input
+              type="email"
+              id="email"
+              required
+              class="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          <div>
+            <label
+              for="password"
+              class="block text-sm font-medium text-gray-700"
+              >Password</label
+            >
+            <input
+              type="password"
+              id="password"
+              required
+              class="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          <div>
+            <label for="cfmPass" class="block text-sm font-medium text-gray-700"
+              >Confirm Password</label
+            >
+            <input
+              type="password"
+              id="cfmPass"
+              required
+              class="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          <div>
+            <label for="phoneNo" class="block text-sm font-medium text-gray-700"
+              >Phone No.</label
+            >
+            <input
+              type="tel"
+              id="phoneNo"
+              pattern="[0-9]{10}"
+              class="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          <div>
+            <label for="bio" class="block text-sm font-medium text-gray-700"
+              >Bio</label
+            >
+            <textarea
+              id="bio"
+              rows="3"
+              placeholder="Tell us something about you..."
+              class="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full rounded-md bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
+          >
+            Register
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 py-8 text-white">
+      <div
+        class="mx-auto flex max-w-5xl flex-col items-start justify-between px-4 md:flex-row md:items-center"
+      >
+        <div class="mb-6 md:mb-0">
+          <h4 class="text-lg font-semibold">Contact Info</h4>
+          <p>Email: yashodip@gmail.com</p>
+          <p>Phone: +91-7666556478</p>
+        </div>
+        <div class="text-sm">
+          <p>&copy; 2025 HireHub</p>
+          <p>Owned by Yashodip Thakare</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

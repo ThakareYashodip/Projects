@@ -1,0 +1,86 @@
+<!-- LOGIN PAGE -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HireHub - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white text-gray-800">
+    <header
+      class="bg-blue-600 text-white py-4 px-6 flex justify-between items-center"
+    >
+      <h2 class="text-2xl font-bold">HireHub</h2>
+      <nav class="space-x-20">
+        <a href="#" class="hover:underline">Home</a>
+        <a href="#" class="hover:underline">Register</a>
+      </nav>
+    </header>
+
+    <main class="max-w-md mx-auto px-6 py-12">
+      <h1 class="text-3xl font-bold text-center mb-6">Login</h1>
+      <form class="space-y-4">
+        <div>
+          <label class="block font-medium">Email or Username</label>
+          <input
+            type="email"
+            class="w-full border border-gray-300 rounded px-4 py-2"
+            placeholder="you@example.com"
+            required
+          />
+        </div>
+
+        <div>
+          <label class="block font-medium">Password</label>
+          <input
+            type="password"
+            class="w-full border border-gray-300 rounded px-4 py-2"
+            placeholder="********"
+            required
+          />
+        </div>
+
+        <div class="flex items-center gap-4">
+          <label
+            ><input type="radio" name="role" value="User" class="mr-2" />
+            User</label
+          >
+          <label
+            ><input type="radio" name="role" value="Company" class="mr-2" />
+            Company</label
+          >
+        </div>
+
+        <div class="flex items-center">
+          <input type="checkbox" id="remember" class="mr-2" />
+          <label for="remember">Remember Me</label>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+        >
+          Login
+        </button>
+      </form>
+    </main>
+
+    <footer class="bg-blue-600 text-white py-8 mt-12">
+      <div
+        class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row justify-between items-start md:items-center"
+      >
+        <div class="mb-6 md:mb-0">
+          <h4 class="text-lg font-semibold">Contact Info</h4>
+          <p>Email: yashodip@gmail.com</p>
+          <p>Phone: +91-7666556478</p>
+        </div>
+        <div class="text-sm">
+          <p>&copy; 2025 HireHub</p>
+          <p>Owned by Yashodip Thakare</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
