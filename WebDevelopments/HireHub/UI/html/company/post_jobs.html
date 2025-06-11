@@ -13,7 +13,8 @@
 
   <main class="max-w-3xl mx-auto mt-10 bg-white p-8 rounded shadow-md">
     <h2 class="text-xl font-semibold mb-4">Create a New Job Posting</h2>
-    <formc>
+    
+    <form onsubmit="showSuccessModal(); return false;">
       <label class="block mb-2 font-medium">Job Title</label>
       <input type="text" class="w-full border px-4 py-2 rounded mb-4" placeholder="e.g. Frontend Developer" />
 
@@ -36,19 +37,40 @@
       <label class="block mb-2 font-medium">Job Description</label>
       <textarea class="w-full border px-4 py-2 rounded mb-6" rows="5" placeholder="Detailed description of responsibilities, requirements, etc."></textarea>
 
-      <button onclick="document.getElementById('successModal').classList.remove('hidden')" type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Post Job</button>
+      <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+        Post Job
+      </button>
     </form>
 
     <!-- Modal -->
-<div id="successModal" class="bg-opacity-40 fixed inset-0 flex hidden items-center justify-center bg-black">
-  <div class="max-w-sm rounded bg-white p-6 text-center shadow-md">
-    <div class="mb-2 text-3xl text-green-500">✅</div>
-    <h2 class="mb-2 text-xl font-semibold">Application Submitted!</h2>
-    <p class="mb-4 text-gray-600">You’ve successfully applied to the job.</p>
-    <button onclick="document.getElementById('successModal').classList.add('hidden')" class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">Close</button>
-  </div>
-</div>
-
+    <div id="successModal" class="bg-opacity-40 fixed inset-0 flex hidden items-center justify-center bg-black z-50">
+      <div class="max-w-sm rounded bg-white p-6 text-center shadow-md">
+        <div class="mb-2 text-3xl text-green-500">✅</div>
+        <h2 class="mb-2 text-xl font-semibold">Job Posted!</h2>
+        <p class="mb-4 text-gray-600">Your job listing has been successfully posted.</p>
+        <button onclick="closeSuccessModal()" class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
+          Close
+        </button>
+      </div>
+    </div>
   </main>
+
+  <script>
+    function showSuccessModal() {
+      const modal = document.getElementById('successModal');
+      modal.classList.remove('hidden');
+
+      // Optional: auto-close after 2.5 seconds
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        // Optional: redirect to manage jobs
+        // window.location.href = "manage-jobs.html";
+      }, 2500);
+    }
+
+    function closeSuccessModal() {
+      document.getElementById('successModal').classList.add('hidden');
+    }
+  </script>
 </body>
 </html>
