@@ -1,76 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Post Job - HireHub</title>
-</head>
-<body class="bg-gray-50 text-gray-800">
-  <header class="bg-blue-600 text-white px-6 py-4">
-    <h1 class="text-2xl font-bold">HireHub - Post Job</h1>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Post Job - HireHub</title>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <header class="bg-blue-600 text-white px-6 py-4">
+      <h1 class="text-2xl font-bold">HireHub - Post Job</h1>
+    </header>
 
-  <main class="max-w-3xl mx-auto mt-10 bg-white p-8 rounded shadow-md">
-    <h2 class="text-xl font-semibold mb-4">Create a New Job Posting</h2>
-    
-    <form onsubmit="showSuccessModal(); return false;">
-      <label class="block mb-2 font-medium">Job Title</label>
-      <input type="text" class="w-full border px-4 py-2 rounded mb-4" placeholder="e.g. Frontend Developer" />
+    <main class="max-w-3xl mx-auto mt-10 bg-white p-8 rounded shadow-md">
+      <h2 class="text-xl font-semibold mb-4">Create a New Job Posting</h2>
 
-      <label class="block mb-2 font-medium">Location</label>
-      <input type="text" class="w-full border px-4 py-2 rounded mb-4" placeholder="e.g. Pune, India" />
+      <form onsubmit="showSuccessModal(); return false;">
+        <label class="block mb-2 font-medium">Job Title</label>
+        <input
+          type="text"
+          class="w-full border px-4 py-2 rounded mb-4"
+          placeholder="e.g. Frontend Developer"
+        />
 
-      <label class="block mb-2 font-medium">Salary Range</label>
-      <input type="text" class="w-full border px-4 py-2 rounded mb-4" placeholder="e.g. ₹6-9 LPA" />
+        <label class="block mb-2 font-medium">Location</label>
+        <input
+          type="text"
+          class="w-full border px-4 py-2 rounded mb-4"
+          placeholder="e.g. Pune, India"
+        />
 
-      <label class="block mb-2 font-medium">Job Type</label>
-      <select class="w-full border px-4 py-2 rounded mb-4">
-        <option value="fulltime">Full-Time</option>
-        <option value="parttime">Part-Time</option>
-        <option value="internship">Internship</option>
-      </select>
+        <label class="block mb-2 font-medium">Salary Range</label>
+        <input
+          type="text"
+          class="w-full border px-4 py-2 rounded mb-4"
+          placeholder="e.g. ₹6-9 LPA"
+        />
 
-      <label class="block mb-2 font-medium">Skills Required</label>
-      <textarea class="w-full border px-4 py-2 rounded mb-4" rows="3" placeholder="e.g. HTML, CSS, JavaScript"></textarea>
+        <label class="block mb-2 font-medium">Job Type</label>
+        <select class="w-full border px-4 py-2 rounded mb-4">
+          <option value="fulltime">Full-Time</option>
+          <option value="parttime">Part-Time</option>
+          <option value="internship">Internship</option>
+        </select>
 
-      <label class="block mb-2 font-medium">Job Description</label>
-      <textarea class="w-full border px-4 py-2 rounded mb-6" rows="5" placeholder="Detailed description of responsibilities, requirements, etc."></textarea>
+        <label class="block mb-2 font-medium">Skills Required</label>
+        <textarea
+          class="w-full border px-4 py-2 rounded mb-4"
+          rows="3"
+          placeholder="e.g. HTML, CSS, JavaScript"
+        ></textarea>
 
-      <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
-        Post Job
-      </button>
-    </form>
+        <label class="block mb-2 font-medium">Job Description</label>
+        <textarea
+          class="w-full border px-4 py-2 rounded mb-6"
+          rows="5"
+          placeholder="Detailed description of responsibilities, requirements, etc."
+        ></textarea>
 
-    <!-- Modal -->
-    <div id="successModal" class="bg-opacity-40 fixed inset-0 flex hidden items-center justify-center bg-black z-50">
-      <div class="max-w-sm rounded bg-white p-6 text-center shadow-md">
-        <div class="mb-2 text-3xl text-green-500">✅</div>
-        <h2 class="mb-2 text-xl font-semibold">Job Posted!</h2>
-        <p class="mb-4 text-gray-600">Your job listing has been successfully posted.</p>
-        <button onclick="closeSuccessModal()" class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
-          Close
+        <button
+          type="submit"
+          class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+        >
+          Post Job
         </button>
+      </form>
+
+      <!-- Modal -->
+      <div
+        id="successModal"
+        class="bg-opacity-40 fixed inset-0 flex hidden items-center justify-center bg-black z-50"
+      >
+        <div class="max-w-sm rounded bg-white p-6 text-center shadow-md">
+          <div class="mb-2 text-3xl text-green-500">✅</div>
+          <h2 class="mb-2 text-xl font-semibold">Job Posted!</h2>
+          <p class="mb-4 text-gray-600">
+            Your job listing has been successfully posted.
+          </p>
+          <button
+            onclick="closeSuccessModal()"
+            class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+          >
+            Close
+          </button>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+    <!-- javascript code functionality -->
+    <script>
+      function showSuccessModal() {
+        const modal = document.getElementById("successModal");
+        modal.classList.remove("hidden");
 
-  <script>
-    function showSuccessModal() {
-      const modal = document.getElementById('successModal');
-      modal.classList.remove('hidden');
+        // Optional: auto-close after 2.5 seconds
+        setTimeout(() => {
+          modal.classList.add("hidden");
+          // Optional: redirect to manage jobs
+          // window.location.href = "manage-jobs.html";
+        }, 2500);
+      }
 
-      // Optional: auto-close after 2.5 seconds
-      setTimeout(() => {
-        modal.classList.add('hidden');
-        // Optional: redirect to manage jobs
-        // window.location.href = "manage-jobs.html";
-      }, 2500);
-    }
-
-    function closeSuccessModal() {
-      document.getElementById('successModal').classList.add('hidden');
-    }
-  </script>
-</body>
+      function closeSuccessModal() {
+        document.getElementById("successModal").classList.add("hidden");
+      }
+    </script>
+  </body>
 </html>
