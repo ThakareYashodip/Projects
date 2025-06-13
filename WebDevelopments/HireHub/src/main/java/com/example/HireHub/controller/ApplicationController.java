@@ -63,12 +63,5 @@ public class ApplicationController {
         return ResponseEntity.ok(apps);
     }
 
-    @GetMapping("/job/{jobId}")
-    public ResponseEntity<List<ApplicantResponse>> getApplicantsForJob(@PathVariable Long jobId,
-            @AuthenticationPrincipal UserDetails userDetails) {
-
-        List<ApplicantResponse> applicants = applicationService.getApplicantsForJob(userDetails.getUsername(), jobId);
-        return ResponseEntity.ok(applicants);
-    }
 
 }
