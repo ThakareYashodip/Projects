@@ -1,4 +1,4 @@
-package com.hirehub.entity;
+package com.example.HireHub.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,6 +24,7 @@ public class Application {
     private Double expectedSalary;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Status status;
 
     private LocalDate appliedDate;
@@ -42,4 +43,7 @@ public class Application {
         ACCEPTED,
         REJECTED
     }
+
+   
+
 }
