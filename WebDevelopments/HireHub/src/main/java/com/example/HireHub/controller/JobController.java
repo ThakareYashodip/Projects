@@ -28,6 +28,7 @@ public class JobController {
         return ResponseEntity.ok(jobRepository.findAll());
     }
 
+    
     @GetMapping("/{id}")
     public ResponseEntity<Job> getJobById(@PathVariable Long id) {
         return jobRepository.findById(id)
