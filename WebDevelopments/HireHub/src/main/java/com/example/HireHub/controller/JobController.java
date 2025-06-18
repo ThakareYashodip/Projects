@@ -22,6 +22,7 @@ public class JobController {
 
     private final JobRepository jobRepository;
     private final JobService jobService;
+    
 
     @GetMapping
     public ResponseEntity<List<Job>> getAllJobs() {
