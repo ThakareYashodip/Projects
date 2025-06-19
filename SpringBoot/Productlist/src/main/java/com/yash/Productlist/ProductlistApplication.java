@@ -11,6 +11,7 @@ public class ProductlistApplication {
 
 		ApplicationContext context = SpringApplication.run(ProductlistApplication.class, args);
 		MyComponent mc = context.getBean(MyComponent.class);
+
 	}
 
 }
