@@ -1,4 +1,4 @@
-package com.yash.Productlist;
+package com.yash.Product;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
