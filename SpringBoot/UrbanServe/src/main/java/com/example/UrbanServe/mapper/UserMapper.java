@@ -11,7 +11,7 @@ public class UserMapper {
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
-        user.setRole(dto.getRole());
+        user.setRole(dto.getRole() != null ? dto.getRole() : User.Role.RESIDENT); // Default fallback
         user.setFlatNumber(dto.getFlatNumber());
         return user;
     }
@@ -21,7 +21,8 @@ public class UserMapper {
         return new UserDTO(
                 user.getName(),
                 user.getRole(),
-                user.getEmail()
+                user.getEmail(),
+                user.getFlatNumber()
         );
     }
 }
