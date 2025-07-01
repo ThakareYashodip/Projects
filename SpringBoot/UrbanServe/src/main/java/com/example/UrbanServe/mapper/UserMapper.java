@@ -19,6 +19,7 @@ public class UserMapper {
     // Entity → DTO
     public static UserDTO userEntityToDTO(User user) {
         return new UserDTO(
+                user.getId(),
                 user.getName(),
                 user.getRole(),
                 user.getEmail(),

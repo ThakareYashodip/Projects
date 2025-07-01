@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDTO {
+    private Long id;
     private String name;
     private Role role;
     private String email;
