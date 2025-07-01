@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:urbanserve/screens/home_screen.dart';
+import 'package:urbanserve/screens/main_screen.dart';
+import 'package:urbanserve/utils/globals.dart';
 
 class LoginController extends GetxController {
   final emailController = TextEditingController();
@@ -30,10 +33,18 @@ class LoginController extends GetxController {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         // You can now access user details like:
-        final userName = data["name"];
-        Get.snackbar("Welcome", "$userName logged in successfully");
+        username = data["name"];
+        useremail = data["email"];
+        userflat = data["flatNo"];
+        userrole = data["role"];
+
+        Get.snackbar(
+          "Welcome",
+          "$username $useremail $userflat $userrole logged in successfully",
+          backgroundColor: Colors.orange.shade200,
+        );
         // Navigate to home or dashboard
-        
+        Get.to(() => MainScreen());
       } else {
         Get.snackbar("Login Failed", "Invalid credentials");
       }
@@ -46,5 +57,10 @@ class LoginController extends GetxController {
 
   void isVisibility() {
     visibility.value = !visibility.value;
+  }
+
+  void clearAll() {
+    emailController.clear();
+    passwordController.clear();
   }
 }
