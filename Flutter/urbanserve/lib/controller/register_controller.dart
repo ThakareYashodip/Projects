@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:urbanserve/screens/home_screen.dart';
 
-String username = "";
-
 class RegisterController extends GetxController {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -48,15 +46,14 @@ class RegisterController extends GetxController {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        username = data["name"];
 
         Get.snackbar(
           "Welcome",
-          "$username registered successfully",
+          "$name registered successfully",
           snackPosition: SnackPosition.BOTTOM,
         );
 
-        Get.off(() => const HomeScreen());
+        Get.to(() => HomeScreen());
         clearController();
       } else {
         final errorMsg =
