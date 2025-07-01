@@ -33,7 +33,7 @@ class ComplaintRegisterController extends GetxController {
         "title": title,
         "description": description,
         "status": status.value,
-      }
+      },
     });
 
     try {
@@ -44,9 +44,11 @@ class ComplaintRegisterController extends GetxController {
         clearFields();
       } else {
         Get.snackbar("Error", "Server error: ${response.body}");
+        clearFields();
       }
     } catch (e) {
       Get.snackbar("Error", "Failed to submit complaint: $e");
+      clearFields();
     } finally {
       isLoading.value = false;
     }
