@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.7.2
+  google_fonts: ^6.2.1
   http: ^1.4.0
   stylish_bottom_bar: ^1.1.1
 
