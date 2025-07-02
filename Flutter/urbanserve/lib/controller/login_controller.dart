@@ -37,14 +37,16 @@ class LoginController extends GetxController {
         useremail = data["email"];
         userflat = data["flatNo"];
         userrole = data["role"];
+        userId = data["id"];
 
         Get.snackbar(
           "Welcome",
-          "$username $useremail $userflat $userrole logged in successfully",
+          "$username $useremail $userflat $userrole $userId logged in successfully",
           backgroundColor: Colors.orange.shade200,
         );
         // Navigate to home or dashboard
         Get.to(() => MainScreen());
+        clearAll();
       } else {
         Get.snackbar("Login Failed", "Invalid credentials");
       }
