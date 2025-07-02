@@ -3,14 +3,15 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:urbanserve/controller/bottom_navbar.dart';
 import 'package:urbanserve/controller/complaint_controller.dart';
-import 'package:urbanserve/controller/login_controller.dart';
-import 'package:urbanserve/controller/register_controller.dart';
-import 'package:urbanserve/screens/complaint_register_screen.dart';
+import 'package:urbanserve/screens/all_complaints_screen.dart';
 import 'package:urbanserve/utils/globals.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
   final BottomNavController controller = Get.put(BottomNavController());
+  final ComplaintRegisterController crcContoller = Get.put(
+    ComplaintRegisterController(),
+  );
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -209,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Welcome back,",
+                    "Welcome back, $userId",
                     style: GoogleFonts.inter(
                       fontSize: 14,
                       color: const Color(0xFF64748B),
@@ -412,6 +413,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   Widget _buildRecentComplaints() {
+    final complaints = widget.crcContoller.complaints;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -428,7 +431,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                // Navigate to complaints list or show full view
+                Get.to(() => ComplaintsListScreen());
+              },
               child: Text(
                 "View All",
                 style: GoogleFonts.inter(
@@ -441,21 +447,25 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ],
         ),
         const SizedBox(height: 16),
-        _buildComplaintTile(
-          Icons.plumbing_outlined,
-          "Bathroom Leakage",
-          "29 Jun 2025",
-          "Open",
-          const Color(0xFFEF4444),
-        ),
-        const SizedBox(height: 12),
-        _buildComplaintTile(
-          Icons.lock_outline,
-          "Gate Lock Broken",
-          "27 Jun 2025",
-          "In Progress",
-          const Color(0xFFF59E0B),
-        ),
+
+        // Check if list is empty
+        if (complaints.isNotEmpty)
+          _buildComplaintTile(
+            Icons.plumbing_outlined,
+            complaints[0]["title"],
+            complaints[0]["createdAt"].toString().substring(0, 10),
+            complaints[0]["status"],
+            const Color(0xFFEF4444),
+          )
+        else
+          Text(
+            "No complaints found.",
+            style: GoogleFonts.inter(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey,
+            ),
+          ),
       ],
     );
   }
@@ -566,7 +576,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             Expanded(
               child: _buildStatBox(
                 "Total",
-                "12",
+                "${widget.crcContoller.complaintsCount}",
                 const Color(0xFF3B82F6),
                 Icons.folder_outlined,
               ),
