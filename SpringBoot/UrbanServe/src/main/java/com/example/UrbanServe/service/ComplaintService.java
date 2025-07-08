@@ -34,4 +34,10 @@ public class ComplaintService {
         complaint.setStatus(newStatus);
         return complaintRepository.save(complaint);
     }
+
+    public long getTotalComplaintCount() {
+        return complaintRepository.count();
+    }
+
+
 }

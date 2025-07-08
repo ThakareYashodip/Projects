@@ -762,11 +762,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:urbanserve/controller/complaint_controller.dart';
 import 'package:urbanserve/screens/login_screen.dart';
 import 'package:urbanserve/utils/globals.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
+  final ComplaintRegisterController crcContoller = Get.put(
+    ComplaintRegisterController(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -1025,7 +1029,7 @@ class ProfileScreen extends StatelessWidget {
               Expanded(
                 child: _buildStatCard(
                   "Total",
-                  "12",
+                  "${crcContoller.complaintsCount}",
                   Icons.assignment_outlined,
                   const Color(0xFF6366F1),
                   const Color(0xFFEEF2FF),

@@ -20,8 +20,9 @@ public class Complaint {
     private String title;
 
     @Lob
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String description;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")
