@@ -41,7 +41,7 @@ public class Complaint {
 
     public enum Status {
         OPEN,
-        IN_PROGRESS,
+        PENDING,
         RESOLVED
     }
 }
