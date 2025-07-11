@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:urbanserve/controller/bottom_navbar.dart';
 import 'package:urbanserve/controller/complaint_controller.dart';
 import 'package:urbanserve/screens/all_complaints_screen.dart';
+import 'package:urbanserve/screens/help_screen.dart';
 import 'package:urbanserve/utils/globals.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -63,6 +64,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         child: RefreshIndicator(
           onRefresh: () async {
             await Future.delayed(const Duration(seconds: 1));
+            await widget.crcContoller.fetchComplaints();
           },
           color: const Color(0xFF3B82F6),
           child: CustomScrollView(
@@ -323,36 +325,44 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Enhanced title
         Text(
           "Quick Actions",
           style: GoogleFonts.inter(
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
+            fontSize: 26,
+            fontWeight: FontWeight.w800,
             color: const Color(0xFF0F172A),
-            letterSpacing: -0.5,
+            letterSpacing: -0.8,
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 24),
+
+        // Premium action tiles
         Row(
           children: [
             Expanded(
-              child: _buildQuickActionTile(
+              child: _buildPremiumTile(
                 Icons.folder_outlined,
                 "My Complaints",
                 const Color(0xFF8B5CF6),
               ),
             ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: _buildQuickActionTile(
-                Icons.notifications_outlined,
-                "Notifications",
-                const Color(0xFFEF4444),
+            const SizedBox(width: 16),
+            GestureDetector(
+              onTap: (){
+                Get.to(()=>HelpPage());
+              },
+              child: Expanded(
+                child: _buildPremiumTile(
+                  Icons.notifications_outlined,
+                  "Notifications",
+                  const Color(0xFFEF4444),
+                ),
               ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 16),
             Expanded(
-              child: _buildQuickActionTile(
+              child: _buildPremiumTile(
                 Icons.help_outline,
                 "Help",
                 const Color(0xFF10B981),
@@ -364,57 +374,156 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildQuickActionTile(IconData icon, String label, Color color) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: color.withOpacity(0.1),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
+  Widget _buildPremiumTile(IconData icon, String label, Color color) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isCompact = constraints.maxWidth < 120;
+
+        return AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeOutCubic,
+          height: isCompact ? 120 : 150,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.white, color.withOpacity(0.02)],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+            borderRadius: BorderRadius.circular(28),
+            border: Border.all(color: color.withOpacity(0.12), width: 1.5),
+            boxShadow: [
+              // Primary colored shadow
+              BoxShadow(
+                color: color.withOpacity(0.25),
+                blurRadius: 25,
+                offset: const Offset(0, 12),
+                spreadRadius: -6,
+              ),
+              // Ambient shadow
+              BoxShadow(
+                color: Colors.black.withOpacity(0.08),
+                blurRadius: 15,
+                offset: const Offset(0, 6),
+                spreadRadius: -3,
+              ),
+              // Top highlight
+              BoxShadow(
+                color: Colors.white.withOpacity(0.9),
+                blurRadius: 10,
+                offset: const Offset(0, -1),
+                spreadRadius: -5,
+              ),
+            ],
           ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: () {},
-          borderRadius: BorderRadius.circular(16),
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: color.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Icon(icon, color: color, size: 28),
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: () {},
+              borderRadius: BorderRadius.circular(28),
+              splashColor: color.withOpacity(0.1),
+              highlightColor: color.withOpacity(0.05),
+              child: Padding(
+                padding: EdgeInsets.all(isCompact ? 16 : 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Ultra-premium icon container
+                    TweenAnimationBuilder<double>(
+                      tween: Tween(begin: 0.0, end: 1.0),
+                      duration: const Duration(milliseconds: 600),
+                      curve: Curves.elasticOut,
+                      builder: (context, value, child) {
+                        return Transform.scale(
+                          scale: 0.8 + (0.2 * value),
+                          child: Container(
+                            width: isCompact ? 50 : 64,
+                            height: isCompact ? 50 : 64,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  color.withOpacity(0.15),
+                                  color.withOpacity(0.05),
+                                  color.withOpacity(0.08),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                stops: const [0.0, 0.5, 1.0],
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                isCompact ? 16 : 20,
+                              ),
+                              border: Border.all(
+                                color: color.withOpacity(0.2),
+                                width: 1.5,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: color.withOpacity(0.3),
+                                  blurRadius: 12,
+                                  offset: const Offset(0, 4),
+                                  spreadRadius: -2,
+                                ),
+                              ],
+                            ),
+                            child: Icon(
+                              icon,
+                              color: color,
+                              size: isCompact ? 24 : 30,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+
+                    SizedBox(height: isCompact ? 12 : 16),
+
+                    // Responsive enhanced label
+                    Flexible(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          label,
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          style: GoogleFonts.inter(
+                            fontSize: isCompact ? 11 : 13,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xFF1F2937),
+                            letterSpacing: -0.3,
+                            height: 1.2,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    if (!isCompact) ...[
+                      const SizedBox(height: 8),
+                      // Subtle action indicator
+                      Container(
+                        width: 24,
+                        height: 3,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              color.withOpacity(0.5),
+                              color.withOpacity(0.2),
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(1.5),
+                        ),
+                      ),
+                    ],
+                  ],
                 ),
-                const SizedBox(height: 12),
-                Text(
-                  label,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.inter(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: const Color(0xFF374151),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
   Widget _buildRecentComplaints() {
-    final complaints = widget.crcContoller.complaints;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -432,7 +541,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             ),
             TextButton(
               onPressed: () {
-                // Navigate to complaints list or show full view
                 Get.to(() => ComplaintsListScreen());
               },
               child: Text(
@@ -447,14 +555,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ],
         ),
         const SizedBox(height: 16),
-
-        // Check if list is empty
-        if (complaints.isNotEmpty)
+        if (widget.crcContoller.complaints.isNotEmpty)
           _buildComplaintTile(
             Icons.plumbing_outlined,
-            complaints[0]["title"],
-            complaints[0]["createdAt"].toString().substring(0, 10),
-            complaints[0]["status"],
+            widget.crcContoller.complaints[0]["title"],
+            widget.crcContoller.complaints[0]["createdAt"]
+                    ?.toString()
+                    .substring(0, 10) ??
+                "",
+            widget.crcContoller.complaints[0]["status"],
             const Color(0xFFEF4444),
           )
         else
@@ -571,36 +680,38 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
         ),
         const SizedBox(height: 16),
-        Row(
-          children: [
-            Expanded(
-              child: _buildStatBox(
-                "Total",
-                "${widget.crcContoller.complaintsCount}",
-                const Color(0xFF3B82F6),
-                Icons.folder_outlined,
+        Obx(() {
+          return Row(
+            children: [
+              Expanded(
+                child: _buildStatBox(
+                  "Total",
+                  "${widget.crcContoller.complaintsCount}",
+                  const Color(0xFF3B82F6),
+                  Icons.folder_outlined,
+                ),
               ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: _buildStatBox(
-                "Open",
-                "4",
-                const Color(0xFFF59E0B),
-                Icons.access_time,
+              const SizedBox(width: 12),
+              Expanded(
+                child: _buildStatBox(
+                  "Open",
+                  "${widget.crcContoller.openCount}",
+                  const Color(0xFFF59E0B),
+                  Icons.access_time,
+                ),
               ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: _buildStatBox(
-                "Resolved",
-                "8",
-                const Color(0xFF10B981),
-                Icons.check_circle_outline,
+              const SizedBox(width: 12),
+              Expanded(
+                child: _buildStatBox(
+                  "Resolved",
+                  "${widget.crcContoller.resolvedCount}",
+                  const Color(0xFF10B981),
+                  Icons.check_circle_outline,
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          );
+        }),
       ],
     );
   }

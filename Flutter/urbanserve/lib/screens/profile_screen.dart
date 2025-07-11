@@ -1039,7 +1039,7 @@ class ProfileScreen extends StatelessWidget {
               Expanded(
                 child: _buildStatCard(
                   "Resolved",
-                  "8",
+                  "${crcContoller.resolvedCount}",
                   Icons.check_circle_outline,
                   const Color(0xFF10B981),
                   const Color(0xFFECFDF5),
@@ -1048,8 +1048,8 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(width: 12),
               Expanded(
                 child: _buildStatCard(
-                  "Pending",
-                  "4",
+                  "Open",
+                  "${crcContoller.pendingCount}",
                   Icons.schedule_outlined,
                   const Color(0xFFF59E0B),
                   const Color(0xFFFFFBEB),
