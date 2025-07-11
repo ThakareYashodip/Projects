@@ -347,12 +347,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 const Color(0xFF8B5CF6),
               ),
             ),
-            const SizedBox(width: 16),
-            GestureDetector(
-              onTap: (){
-                Get.to(()=>HelpPage());
-              },
-              child: Expanded(
+            const SizedBox(width: 12),
+            Expanded(
+              child: GestureDetector(
+                onTap: () {
+                  // Get.to(() => NotificationsPage()); // ✅ your actual notifications screen
+                },
                 child: _buildPremiumTile(
                   Icons.notifications_outlined,
                   "Notifications",
@@ -360,12 +360,16 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 ),
               ),
             ),
-            const SizedBox(width: 16),
+            const SizedBox(width: 12),
             Expanded(
               child: _buildPremiumTile(
                 Icons.help_outline,
                 "Help",
                 const Color(0xFF10B981),
+                onTap: () {
+                  debugPrint("✅ Help tapped");
+                  Get.to(() => HelpPage());
+                },
               ),
             ),
           ],
@@ -374,7 +378,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildPremiumTile(IconData icon, String label, Color color) {
+  Widget _buildPremiumTile(
+    IconData icon,
+    String label,
+    Color color, {
+    VoidCallback? onTap,
+  }) {
     return LayoutBuilder(
       builder: (context, constraints) {
         final isCompact = constraints.maxWidth < 120;
@@ -418,7 +427,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           child: Material(
             color: Colors.transparent,
             child: InkWell(
-              onTap: () {},
+              onTap: onTap,
               borderRadius: BorderRadius.circular(28),
               splashColor: color.withOpacity(0.1),
               highlightColor: color.withOpacity(0.05),
