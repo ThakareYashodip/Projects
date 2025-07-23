@@ -18,8 +18,8 @@ class ComplaintRegisterController extends GetxController {
   RxList complaints = [].obs;
   RxInt openCount = 0.obs;
   RxInt resolvedCount = 0.obs;
-  RxInt pendingCount = 0.obs;
   var complaintsCount;
+  RxInt complaintID = 3.obs;
 
   @override
   void onInit() {
@@ -190,11 +190,6 @@ class ComplaintRegisterController extends GetxController {
         .length;
 
     log(resolvedCount.toString());
-
-    pendingCount.value = complaints
-        .where((c) => c["status"] == "PENDING")
-        .length;
-    log(pendingCount.toString());
   }
 }
 
