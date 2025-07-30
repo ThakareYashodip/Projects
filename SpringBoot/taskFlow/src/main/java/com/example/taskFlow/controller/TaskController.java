@@ -1,5 +1,6 @@
 package com.example.taskFlow.controller;
 
+import com.example.taskFlow.config.ApiResponse;
 import com.example.taskFlow.dto.TaskDTO;
 import com.example.taskFlow.entity.Task;
 import com.example.taskFlow.mapper.TaskMapper;
@@ -8,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,24 +34,26 @@ public class TaskController {
             Task task = TaskMapper.toEntity(taskDTO);
             Task createdTask = taskService.createTask(task);
             TaskDTO responseDTO = TaskMapper.toDTO(createdTask);
-
-            return ResponseEntity
-                    .created(URI.create("/api/tasks/" + createdTask.getId()))
-                    .body(responseDTO);
+            ApiResponse<TaskDTO> apiResponse = new ApiResponse<>(
+                    true,"Task Created.",responseDTO
+            );
+            return ResponseEntity.status(HttpStatus.CREATED).body(apiResponse);
+//                    .created(URI.create("/api/tasks/" + createdTask.getId()))
+//                    .body(responseDTO);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Failed to create task.");
         }
     }
 
     // Get All Tasks
-    @GetMapping
-    public ResponseEntity<List<TaskDTO>> getAllTasks() {
+    @GetMapping("/all")
+    public ResponseEntity<ApiResponse<List<TaskDTO>>> getAllTasks() {
         List<TaskDTO> taskDTOs = taskService.getAllTask()
                 .stream()
                 .map(TaskMapper::toDTO)
                 .collect(Collectors.toList());
-
-        return ResponseEntity.ok(taskDTOs);
+        ApiResponse<List<TaskDTO>> apiResponse = new ApiResponse<List<TaskDTO>>(true,"Tasks Fetched",taskDTOs);
+        return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
     }
 
     // Get Task by ID
