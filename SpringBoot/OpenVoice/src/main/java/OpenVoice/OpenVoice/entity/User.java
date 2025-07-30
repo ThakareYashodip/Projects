@@ -5,9 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Users")
 @Data // Getter , Setter , ToString , RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +25,6 @@ public class User {
     @Column(nullable = false)
     private String role = "User";
 
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    private List<Report> reports;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Report> reports;
 }
