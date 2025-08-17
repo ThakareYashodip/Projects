@@ -3,14 +3,12 @@ package com.example.bookmart.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -18,25 +16,20 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Builder
-public class Author {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "UserName Required !")
-    @Size(min = 3,max = 50,message = "Username must be between 3 and 50 characters")
+    @NotBlank(message = "Category name is required")
+    @Size(max = 100, message = "Category name cannot exceed 100 characters")
     private String name;
 
-    @Column(length = 2000)
-    private String bio;
+    @Size(max = 255, message = "Description cannot exceed 255 characters")
+    private String description;
 
-    @Past
-    private LocalDate birthDate;
-    private String nationality;
-
-    @OneToMany(mappedBy = "author" , cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "categories")
     @JsonIgnore
     private List<Book> books;
-
 }
