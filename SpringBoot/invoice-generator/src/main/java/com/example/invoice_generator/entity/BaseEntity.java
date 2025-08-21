@@ -20,9 +20,11 @@ public abstract class BaseEntity {
     private Long id;
 
     @CreatedDate
-    @Column(updatable = false)
+    @Column(updatable = false , nullable = false)
     private LocalDateTime createdAt;
 
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
+//    @LastModifiedDate
+//    @Column(nullable = false)
+//    private LocalDateTime updatedAt;
+
 }
