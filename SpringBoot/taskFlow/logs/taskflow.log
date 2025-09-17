@@ -1,0 +1,41 @@
+2025-08-12T16:37:07.014+05:30  INFO 4124 --- [taskFlow] [main] c.example.taskFlow.TaskFlowApplication   : Starting TaskFlowApplication using Java 22.0.2 with PID 4124 (Y:\Projects\SpringBoot\taskFlow\target\classes started by ganut in Y:\Projects\SpringBoot\taskFlow)
+2025-08-12T16:37:07.029+05:30 DEBUG 4124 --- [taskFlow] [main] c.example.taskFlow.TaskFlowApplication   : Running with Spring Boot v3.5.3, Spring v6.2.8
+2025-08-12T16:37:07.031+05:30  INFO 4124 --- [taskFlow] [main] c.example.taskFlow.TaskFlowApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-08-12T16:37:09.065+05:30  INFO 4124 --- [taskFlow] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-12T16:37:09.153+05:30  INFO 4124 --- [taskFlow] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 2 JPA repository interfaces.
+2025-08-12T16:37:10.396+05:30  INFO 4124 --- [taskFlow] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-08-12T16:37:10.427+05:30  INFO 4124 --- [taskFlow] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-12T16:37:10.428+05:30  INFO 4124 --- [taskFlow] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-08-12T16:37:10.528+05:30  INFO 4124 --- [taskFlow] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-12T16:37:10.529+05:30  INFO 4124 --- [taskFlow] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3325 ms
+2025-08-12T16:37:11.104+05:30  INFO 4124 --- [taskFlow] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-12T16:37:11.209+05:30  INFO 4124 --- [taskFlow] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-08-12T16:37:11.252+05:30  INFO 4124 --- [taskFlow] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-12T16:37:11.755+05:30  INFO 4124 --- [taskFlow] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-12T16:37:11.793+05:30  INFO 4124 --- [taskFlow] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-12T16:37:12.371+05:30  INFO 4124 --- [taskFlow] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3620eab
+2025-08-12T16:37:12.374+05:30  INFO 4124 --- [taskFlow] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-12T16:37:12.509+05:30  INFO 4124 --- [taskFlow] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.42
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-12T16:37:13.792+05:30  INFO 4124 --- [taskFlow] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-12T16:37:13.861+05:30  INFO 4124 --- [taskFlow] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-12T16:37:14.354+05:30  WARN 4124 --- [taskFlow] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-12T16:37:14.449+05:30  WARN 4124 --- [taskFlow] [main] o.s.security.core.userdetails.User       : User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2025-08-12T16:37:14.636+05:30  WARN 4124 --- [taskFlow] [main] o.s.security.core.userdetails.User       : User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2025-08-12T16:37:14.743+05:30  INFO 4124 --- [taskFlow] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name users
+2025-08-12T16:37:16.158+05:30  INFO 4124 --- [taskFlow] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-08-12T16:37:16.170+05:30  INFO 4124 --- [taskFlow] [main] c.example.taskFlow.TaskFlowApplication   : Started TaskFlowApplication in 10.22 seconds (process running for 11.045)
+2025-08-12T16:38:42.778+05:30  INFO 4124 --- [taskFlow] [http-nio-9090-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-12T16:38:42.780+05:30  INFO 4124 --- [taskFlow] [http-nio-9090-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-08-12T16:38:42.784+05:30  INFO 4124 --- [taskFlow] [http-nio-9090-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-08-12T16:39:21.794+05:30  INFO 4124 --- [taskFlow] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-12T16:39:21.804+05:30  INFO 4124 --- [taskFlow] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-08-12T16:39:21.823+05:30  INFO 4124 --- [taskFlow] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-12T16:39:21.828+05:30  INFO 4124 --- [taskFlow] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-08-12T16:39:21.867+05:30  INFO 4124 --- [taskFlow] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

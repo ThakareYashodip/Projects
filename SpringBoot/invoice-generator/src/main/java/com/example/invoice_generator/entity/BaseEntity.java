@@ -1,5 +1,6 @@
 package com.example.invoice_generator.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +20,7 @@ public abstract class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @CreatedDate
+    @CreatedDate    @JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     @Column(updatable = false , nullable = false)
     private LocalDateTime createdAt;
 

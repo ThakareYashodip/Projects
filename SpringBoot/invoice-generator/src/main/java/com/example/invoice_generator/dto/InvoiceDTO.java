@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 public class InvoiceDTO {
     private Long id ;
-    private String invoicenumber;
+    private String invoiceNumber;
     private LocalDate invoiceDate;
     private Long clientId;
     private List<InvoiceItemDTO> items;

@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional health calculators: BMI, Age, BMR, and Calorie needs. Accurate, free tools for your wellness journey with detailed insights and recommendations.">
+    <meta name="keywords" content="BMI calculator, age calculator, BMR calculator, calorie calculator, health tools, fitness calculator">
+    <title>HealthTools Pro | Professional BMI, Age, BMR & Calorie Calculators</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #06b6d4;
+            --accent: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            font-weight: 400;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Enhanced Header */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.75rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark);
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+            background: rgba(79, 70, 229, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        .nav-link.active {
+            color: white;
+            background: var(--gradient-primary);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,100 100,0 200,50 300,20 400,70 500,10 600,60 700,30 800,80 900,5 1000,40 1000,100"/></svg>') repeat-x;
+            animation: wave 20s linear infinite;
+        }
+        
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-features {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .hero-feature i {
+            color: var(--secondary);
+        }
+        
+        /* Calculator Cards */
+        .calculator-section {
+            padding: 5rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .calculator-card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 3rem;
+            background: white;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .calculator-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+        
+        .calculator-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .calculator-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .calculator-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .calculator-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .calculator-description {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .calculator-body {
+            padding: 2rem;
+        }
+        
+        /* Form Enhancements */
+        .form-label {
+            font-weight: 500;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .form-control, .form-select {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        .form-check-input {
+            border-radius: 6px;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-calculate {
+            background: var(--gradient-primary);
+            border: none;
+            padding: 0.875rem 2rem;
+            font-weight: 600;
+            border-radius: 12px;
+            color: white;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-calculate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-calculate:hover::before {
+            left: 100%;
+        }
+        
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Results */
+        .result-box {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .result-box.show {
+            opacity: 1;
+            height: auto;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .result-value {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+        
+        .result-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.5rem;
+        }
+        
+        .result-category {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .category-underweight { background: #dbeafe; color: #1e40af; }
+        .category-normal { background: #dcfce7; color: #166534; }
+        .category-overweight { background: #fef3c7; color: #92400e; }
+        .category-obese { background: #fee2e2; color: #dc2626; }
+        
+        /* Progress Bars */
+        .progress {
+            height: 8px;
+            border-radius: 10px;
+            background: #e2e8f0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+        
+        /* Info Cards */
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .info-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Ad Slots */
+        .ad-slot {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border: 2px dashed #cbd5e1;
+            padding: 2rem;
+            text-align: center;
+            margin: 3rem 0;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ad-slot::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            border-radius: 16px;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 5rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-primary);
+        }
+        
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-features {
+                gap: 1rem;
+            }
+            
+            .calculator-card {
+                margin-bottom: 2rem;
+            }
+            
+            .calculator-header,
+            .calculator-body {
+                padding: 1.5rem;
+            }
+            
+            .result-value {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        /* Loading States */
+        .btn-calculate.loading {
+            pointer-events: none;
+        }
+        
+        .btn-calculate.loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 50%;
+            left: 50%;
+            margin-left: -8px;
+            margin-top: -8px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Header -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-heartbeat me-2"></i>HealthTools Pro
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#age">
+                            <i class="fas fa-calendar-alt me-1"></i>Age
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#bmi">
+                            <i class="fas fa-weight me-1"></i>BMI
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#bmr">
+                            <i class="fas fa-fire me-1"></i>BMR
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#calorie">
+                            <i class="fas fa-utensils me-1"></i>Calories
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content text-center">
+                <h1 class="hero-title">Professional Health Calculators</h1>
+                <p class="hero-subtitle">
+                    Get accurate health insights with our scientifically-backed calculators. 
+                    Track your BMI, calculate your metabolic rate, and plan your nutrition goals with precision.
+                </p>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>100% Privacy Protected</span>
+                    </div>
+                    <div class="hero-feature">
+                        <i class="fas fa-calculator"></i>
+                        <span>Scientifically Accurate</span>
+                    </div>
+                    <div class="hero-feature">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Mobile Optimized</span>
+                    </div>
+                    <div class="hero-feature">
+                        <i class="fas fa-heart"></i>
+                        <span>Completely Free</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="calculator-section">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <h2 class="section-title">Your Health, Calculated Precisely</h2>
+                <p class="section-subtitle">
+                    Our comprehensive suite of health calculators provides you with essential metrics to track and improve your wellness journey. All calculations are performed locally on your device for maximum privacy.
+                </p>
+            </div>
+
+            <!-- Age Calculator -->
+            <section id="age" class="mb-5">
+                <div class="calculator-card card fade-in-up">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="calculator-title">Precise Age Calculator</h3>
+                        <p class="calculator-description">
+                            Calculate your exact age down to the day with our precise age calculator. 
+                            Perfect for tracking milestones, planning celebrations, or just satisfying your curiosity about how many days you've been alive.
+                        </p>
+                    </div>
+                    <div class="calculator-body">
+                        <form id="ageForm">
+                            <div class="mb-4">
+                                <label for="birthDate" class="form-label">
+                                    <i class="fas fa-birthday-cake me-2"></i>Date of Birth
+                                </label>
+                                <input type="date" class="form-control" id="birthDate" required>
+                            </div>
+                            <button type="submit" class="btn btn-calculate">
+                                <i class="fas fa-calculator me-2"></i>Calculate My Age
+                            </button>
+                        </form>
+                        <div id="ageResult" class="result-box"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ad Slot 1 -->
+            <div class="ad-slot">
+                <!-- Google AdSense Slot -->
+                <p class="text-muted mb-1">Advertisement</p>
+                <small>Supporting our free health tools</small>
+            </div>
+
+            <!-- BMI Calculator -->
+            <section id="bmi" class="mb-5">
+                <div class="calculator-card card fade-in-up">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-weight"></i>
+                        </div>
+                        <h3 class="calculator-title">Body Mass Index (BMI) Calculator</h3>
+                        <p class="calculator-description">
+                            Determine your BMI and understand your weight category with our professional BMI calculator. 
+                            Get personalized recommendations based on WHO guidelines and track your progress toward optimal health.
+                        </p>
+                    </div>
+                    <div class="calculator-body">
+                        <form id="bmiForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="height" class="form-label">
+                                        <i class="fas fa-ruler-vertical me-2"></i>Height (cm)
+                                    </label>
+                                    <input type="number" class="form-control" id="height" placeholder="175" min="100" max="250" step="0.1" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="weight" class="form-label">
+                                        <i class="fas fa-weight-hanging me-2"></i>Weight (kg)
+                                    </label>
+                                    <input type="number" class="form-control" id="weight" placeholder="70" min="30" max="300" step="0.1" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-calculate">
+                                <i class="fas fa-calculator me-2"></i>Calculate BMI
+                            </button>
+                        </form>
+                        <div id="bmiResult" class="result-box"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ad Slot 2 -->
+            <div class="ad-slot">
+                <!-- Google AdSense Slot -->
+                <p class="text-muted mb-1">Advertisement</p>
+                <small>Supporting our free health tools</small>
+            </div>
+
+            <!-- BMR Calculator -->
+            <section id="bmr" class="mb-5">
+                <div class="calculator-card card fade-in-up">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3 class="calculator-title">Basal Metabolic Rate (BMR) Calculator</h3>
+                        <p class="calculator-description">
+                            Discover how many calories your body burns at rest with our BMR calculator using the scientifically-proven Mifflin-St Jeor equation. 
+                            Essential for understanding your baseline energy needs and planning your nutrition strategy.
+                        </p>
+                    </div>
+                    <div class="calculator-body">
+                        <form id="bmrForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">
+                                        <i class="fas fa-venus-mars me-2"></i>Gender
+                                    </label>
+                                    <div class="d-flex gap-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
+                                            <label class="form-check-label" for="male">
+                                                <i class="fas fa-mars me-1"></i>Male
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                                            <label class="form-check-label" for="female">
+                                                <i class="fas fa-venus me-1"></i>Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ageBMR" class="form-label">
+                                        <i class="fas fa-hourglass-half me-2"></i>Age (years)
+                                    </label>
+                                    <input type="number" class="form-control" id="ageBMR" placeholder="25" min="15" max="120" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="heightBMR" class="form-label">
+                                        <i class="fas fa-ruler-vertical me-2"></i>Height (cm)
+                                    </label>
+                                    <input type="number" class="form-control" id="heightBMR" placeholder="175" min="100" max="250" step="0.1" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="weightBMR" class="form-label">
+                                        <i class="fas fa-weight-hanging me-2"></i>Weight (kg)
+                                    </label>
+                                    <input type="number" class="form-control" id="weightBMR" placeholder="70" min="30" max="300" step="0.1" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-calculate">
+                                <i class="fas fa-fire me-2"></i>Calculate BMR
+                            </button>
+                        </form>
+                        <div id="bmrResult" class="result-box"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ad Slot 3 -->
+            <div class="ad-slot">
+                <!-- Google AdSense Slot -->
+                <p class="text-muted mb-1">Advertisement</p>
+                <small>Supporting our free health tools</small>
+            </div>
+
+            <!-- Calorie Calculator -->
+            <section id="calorie" class="mb-5">
+                <div class="calculator-card card fade-in-up">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3 class="calculator-title">Daily Calorie Needs Calculator</h3>
+                        <p class="calculator-description">
+                            Determine your optimal daily calorie intake based on your activity level and health goals. 
+                            Our calculator provides maintenance, weight loss, and weight gain recommendations using proven scientific formulas.
+                        </p>
+                    </div>
+                    <div class="calculator-body">
+                        <form id="calorieForm">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-venus-mars me-2"></i>Gender
+                                    </label>
+                                    <div class="d-flex gap-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="genderCalorie" id="maleCalorie" value="male" checked>
+                                            <label class="form-check-label" for="maleCalorie">
+                                                <i class="fas fa-mars me-1"></i>Male
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="genderCalorie" id="femaleCalorie" value="female">
+                                            <label class="form-check-label" for="femaleCalorie">
+                                                <i class="fas fa-venus me-1"></i>Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="ageCalorie" class="form-label">
+                                        <i class="fas fa-hourglass-half me-2"></i>Age (years)
+                                    </label>
+                                    <input type="number" class="form-control" id="ageCalorie" placeholder="25" min="15" max="120" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="heightCalorie" class="form-label">
+                                        <i class="fas fa-ruler-vertical me-2"></i>Height (cm)
+                                    </label>
+                                    <input type="number" class="form-control" id="heightCalorie" placeholder="175" min="100" max="250" step="0.1" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="weightCalorie" class="form-label">
+                                        <i class="fas fa-weight-hanging me-2"></i>Weight (kg)
+                                    </label>
+                                    <input type="number" class="form-control" id="weightCalorie" placeholder="70" min="30" max="300" step="0.1" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="activity" class="form-label">
+                                    <i class="fas fa-running me-2"></i>Activity Level
+                                </label>
+                                <select class="form-select" id="activity" required>
+                                    <option value="1.2">🛋️ Sedentary - Little or no exercise, desk job</option>
+                                    <option value="1.375">🚶 Lightly Active - Light exercise 1-3 days/week</option>
+                                    <option value="1.55" selected>🏃 Moderately Active - Moderate exercise 3-5 days/week</option>
+                                    <option value="1.725">💪 Very Active - Hard exercise 6-7 days/week</option>
+                                    <option value="1.9">🏋️ Extremely Active - Very hard exercise, physical job</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-calculate">
+                                <i class="fas fa-utensils me-2"></i>Calculate Daily Calories
+                            </button>
+                        </form>
+                        <div id="calorieResult" class="result-box"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Ad Slot -->
+            <div class="ad-slot">
+                <!-- Google AdSense Slot -->
+                <p class="text-muted mb-1">Advertisement</p>
+                <small>Supporting our free health tools</small>
+            </div>
+
+            <!-- Health Tips Section -->
+            <section class="mb-5">
+                <div class="section-header">
+                    <h2 class="section-title">Essential Health Information</h2>
+                    <p class="section-subtitle">
+                        Understanding your health metrics is just the beginning. Here's what you need to know about maintaining optimal wellness.
+                    </p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="info-card text-center">
+                            <div class="info-card-icon mx-auto" style="background: linear-gradient(135deg, #10b981, #059669); color: white;">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h5 class="fw-semibold">BMI Ranges</h5>
+                            <p class="small text-muted">
+                                <strong>Underweight:</strong> &lt;18.5<br>
+                                <strong>Normal:</strong> 18.5-24.9<br>
+                                <strong>Overweight:</strong> 25-29.9<br>
+                                <strong>Obese:</strong> ≥30
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="info-card text-center">
+                            <div class="info-card-icon mx-auto" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: white;">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <h5 class="fw-semibold">BMR Facts</h5>
+                            <p class="small text-muted">
+                                Your BMR accounts for 60-75% of daily calorie burn. It decreases with age and increases with muscle mass.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="info-card text-center">
+                            <div class="info-card-icon mx-auto" style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white;">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h5 class="fw-semibold">Calorie Goals</h5>
+                            <p class="small text-muted">
+                                A 500-calorie daily deficit leads to ~1lb/week weight loss. Always consult professionals for personalized advice.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="info-card text-center">
+                            <div class="info-card-icon mx-auto" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white;">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h5 class="fw-semibold">Track Progress</h5>
+                            <p class="small text-muted">
+                                Regular monitoring helps maintain healthy habits. Combine metrics with lifestyle changes for best results.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <i class="fas fa-heartbeat me-2"></i>HealthTools Pro
+                    </div>
+                    <p class="text-muted">Providing accurate health calculation tools since 2023. Our mission is to make health metrics accessible and understandable for everyone.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="footer-title">Calculators</h5>
+                    <ul class="footer-links">
+                        <li><a href="#age">Age Calculator</a></li>
+                        <li><a href="#bmi">BMI Calculator</a></li>
+                        <li><a href="#bmr">BMR Calculator</a></li>
+                        <li><a href="#calorie">Calorie Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="footer-title">Legal</h5>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showPrivacyPage()">Privacy Policy</a></li>
+                        <li><a href="#" onclick="showTermsPage()">Terms of Service</a></li>
+                        <li><a href="#" onclick="showDisclaimerModal()">Medical Disclaimer</a></li>
+                        <li><a href="#" onclick="showCookiePolicy()">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="footer-title">Contact</h5>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showContactPage()">Contact Us</a></li>
+                        <li><a href="mailto:support@healthtools.pro">support@healthtools.pro</a></li>
+                        <li><a href="#">Report a Bug</a></li>
+                        <li><a href="#">Submit Feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="d-md-flex justify-content-between align-items-center">
+                <div class="mb-3 mb-md-0">
+                    <p class="mb-0 text-muted small">&copy; 2023 HealthTools Pro. All rights reserved.</p>
+                </div>
+                <div>
+                    <a href="#" class="text-muted small me-3">Accessibility</a>
+                    <a href="#" class="text-muted small me-3">Sitemap</a>
+                    <a href="#" class="text-muted small">GDPR Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Privacy Policy Modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Privacy Policy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Information Collection</h6>
+                    <p>HealthTools Pro is committed to protecting your privacy. Our calculators process your input data locally in your browser - we do not collect, store, or transmit any personal health data you enter into our calculators.</p>
+                    
+                    <h6 class="mt-4">2. Cookies and Tracking Technologies</h6>
+                    <p>This website uses Google AdSense to display advertisements. Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of advertising cookies enables it and its partners to serve ads based on users' visits to this and other sites on the Internet.</p>
+                    <p>You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank">Google Ads Settings</a>.</p>
+                    
+                    <h6 class="mt-4">3. Third-Party Services</h6>
+                    <p>We use the following third-party services:</p>
+                    <ul>
+                        <li>Google AdSense for advertising</li>
+                        <li>Google Analytics for traffic analysis (anonymous data only)</li>
+                    </ul>
+                    
+                    <h6 class="mt-4">4. Data Security</h6>
+                    <p>Since all calculations occur in your browser, your data never leaves your device. We implement appropriate technical measures to ensure the security of our website infrastructure.</p>
+                    
+                    <h6 class="mt-4">5. Changes to This Policy</h6>
+                    <p>We may update our Privacy Policy periodically. We will notify you of any changes by posting the new policy on this page and updating the "Last Updated" date.</p>
+                    
+                    <p class="mt-4"><strong>Last Updated:</strong> January 1, 2023</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Terms of Service</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Acceptance of Terms</h6>
+                    <p>By accessing and using HealthTools Pro, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+                    
+                    <h6 class="mt-4">2. Service Description</h6>
+                    <p>HealthTools Pro provides free online health calculators including:</p>
+                    <ul>
+                        <li>Body Mass Index (BMI) Calculator</li>
+                        <li>Basal Metabolic Rate (BMR) Calculator</li>
+                        <li>Daily Calorie Needs Calculator</li>
+                        <li>Age Calculator</li>
+                    </ul>
+                    <p>These tools are provided for informational and educational purposes only.</p>
+                    
+                    <h6 class="mt-4">3. Medical Disclaimer</h6>
+                    <div class="alert alert-warning">
+                        <p><strong>Important:</strong> The information provided by HealthTools Pro is for general informational purposes only and is NOT a substitute for professional medical advice, diagnosis, or treatment.</p>
+                        <p class="mb-0">Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
+                    </div>
+                    
+                    <h6 class="mt-4">4. Limitation of Liability</h6>
+                    <p>To the fullest extent permitted by law, HealthTools Pro shall not be liable for any direct, indirect, incidental, special, consequential or exemplary damages resulting from the use or inability to use the service.</p>
+                    
+                    <p class="mt-4"><strong>Effective Date:</strong> January 1, 2023</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Agree</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medical Disclaimer Modal -->
+    <div class="modal fade" id="disclaimerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title">Medical Disclaimer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Important:</strong> The information provided by HealthTools Pro is for general informational purposes only and is not intended as medical advice, diagnosis, or treatment.</p>
+                    <p>Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition or health objectives.</p>
+                    <p>Never disregard professional medical advice or delay seeking it because of something you have read on this website.</p>
+                    <p class="fw-bold mt-3">If you think you may have a medical emergency, call your doctor or emergency services immediately.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Policy Modal -->
+    <div class="modal fade" id="cookieModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cookie Policy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>What Are Cookies</h6>
+                    <p>Cookies are small text files stored on your device when you visit websites. We use cookies to:</p>
+                    <ul>
+                        <li>Support essential website functionality</li>
+                        <li>Analyze site usage (anonymous analytics)</li>
+                        <li>Display personalized advertisements</li>
+                    </ul>
+                    
+                    <h6 class="mt-3">Managing Cookies</h6>
+                    <p>You can control cookies through your browser settings. However, disabling cookies may affect website functionality.</p>
+                    
+                    <h6 class="mt-3">Third-Party Cookies</h6>
+                    <p>We use Google AdSense and Analytics services that may set their own cookies. These are subject to Google's privacy policies.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Contact Us</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="contactName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="contactName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="contactEmail">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">Message</label>
+                            <textarea class="form-control" id="contactMessage" rows="4"></textarea>
+                        </div>
+                    </form>
+                    <div class="mt-4">
+                        <h6>Alternative Contact Methods</h6>
+                        <p class="mb-1"><strong>Email:</strong> support@healthtools.pro</p>
+                        <p><strong>Business Hours:</strong> Monday-Friday, 9AM-5PM EST</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Age Calculator
+        document.getElementById('ageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const birthDate = new Date(document.getElementById('birthDate').value);
+            const today = new Date();
+            
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            
+            // Calculate months and days
+            let months = today.getMonth() - birthDate.getMonth();
+            let days = today.getDate() - birthDate.getDate();
+            
+            if (days < 0) {
+                months--;
+                // Get days in previous month
+                const prevMonthLastDay = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+                days += prevMonthLastDay;
+            }
+            
+            if (months < 0) {
+                age--;
+                months += 12;
+            }
+            
+            const resultBox = document.getElementById('ageResult');
+            resultBox.innerHTML = `
+                <h5 class="mb-3">Your Age</h5>
+                <div class="d-flex gap-4 mb-3">
+                    <div class="text-center">
+                        <div class="display-6 text-primary">${age}</div>
+                        <div class="text-muted">Years</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="display-6 text-primary">${months}</div>
+                        <div class="text-muted">Months</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="display-6 text-primary">${days}</div>
+                        <div class="text-muted">Days</div>
+                    </div>
+                </div>
+                <p class="text-muted">Born on ${birthDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            `;
+            resultBox.classList.add('show');
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // BMI Calculator
+        document.getElementById('bmiForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const height = parseFloat(document.getElementById('height').value) / 100; // Convert cm to m
+            const weight = parseFloat(document.getElementById('weight').value);
+            
+            const bmi = (weight / (height * height)).toFixed(1);
+            let category = '';
+            let color = '';
+            let recommendation = '';
+            
+            if (bmi < 18.5) {
+                category = 'Underweight';
+                color = 'text-info';
+                recommendation = 'Consider consulting a healthcare provider about achieving a healthy weight.';
+            } else if (bmi >= 18.5 && bmi < 25) {
+                category = 'Normal weight';
+                color = 'text-success';
+                recommendation = 'Maintain your healthy lifestyle with balanced nutrition and regular exercise.';
+            } else if (bmi >= 25 && bmi < 30) {
+                category = 'Overweight';
+                color = 'text-warning';
+                recommendation = 'Consider lifestyle changes such as increased physical activity and dietary adjustments.';
+            } else {
+                category = 'Obese';
+                color = 'text-danger';
+                recommendation = 'Consult with a healthcare provider about weight management strategies.';
+            }
+            
+            const resultBox = document.getElementById('bmiResult');
+            resultBox.innerHTML = `
+                <h5 class="mb-3">Your BMI Result</h5>
+                <div class="d-flex align-items-center mb-3">
+                    <div class="display-4 ${color} me-3">${bmi}</div>
+                    <div>
+                        <div class="fw-bold ${color}">${category}</div>
+                        <div class="text-muted small">BMI Range: ${getBMIRange(bmi)}</div>
+                    </div>
+                </div>
+                <div class="alert ${color === 'text-info' ? 'alert-info' : color === 'text-success' ? 'alert-success' : color === 'text-warning' ? 'alert-warning' : 'alert-danger'}">
+                    ${recommendation}
+                </div>
+                <div class="progress mb-2" style="height: 20px;">
+                    <div class="progress-bar bg-info" style="width: 18.5%"></div>
+                    <div class="progress-bar bg-success" style="width: 6.5%"></div>
+                    <div class="progress-bar bg-warning" style="width: 5%"></div>
+                    <div class="progress-bar bg-danger" style="width: 5%"></div>
+                </div>
+                <div class="row text-center small text-muted">
+                    <div class="col-3">&lt;18.5</div>
+                    <div class="col-3">18.5-24.9</div>
+                    <div class="col-3">25-29.9</div>
+                    <div class="col-3">≥30</div>
+                </div>
+            `;
+            resultBox.classList.add('show');
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            function getBMIRange(bmi) {
+                if (bmi < 18.5) return "Below normal range";
+                if (bmi < 25) return "Normal range";
+                if (bmi < 30) return "Above normal range";
+                return "Significantly above normal range";
+            }
+        });
+
+        // BMR Calculator (Mifflin-St Jeor Equation)
+        document.getElementById('bmrForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const age = parseFloat(document.getElementById('ageBMR').value);
+            const height = parseFloat(document.getElementById('heightBMR').value);
+            const weight = parseFloat(document.getElementById('weightBMR').value);
+            
+            // Mifflin-St Jeor Equation
+            let bmr;
+            if (gender === 'male') {
+                bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+            } else {
+                bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+            }
+            
+            const resultBox = document.getElementById('bmrResult');
+            resultBox.innerHTML = `
+                <h5 class="mb-3">Your BMR Result</h5>
+                <div class="d-flex align-items-center mb-3">
+                    <div class="display-4 text-primary me-3">${bmr.toFixed(0)}</div>
+                    <div>
+                        <div class="fw-bold">Calories/day</div>
+                        <div class="text-muted small">At complete rest</div>
+                    </div>
+                </div>
+                <div class="alert alert-info">
+                    <strong>BMR (Basal Metabolic Rate)</strong> is the number of calories your body needs to maintain basic physiological functions at rest.
+                </div>
+                <p class="mb-0 text-muted small">Calculated using the Mifflin-St Jeor Equation for ${gender === 'male' ? 'men' : 'women'}.</p>
+            `;
+            resultBox.classList.add('show');
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Calorie Calculator (BMR * Activity Level)
+        document.getElementById('calorieForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const gender = document.querySelector('input[name="genderCalorie"]:checked').value;
+            const age = parseFloat(document.getElementById('ageCalorie').value);
+            const height = parseFloat(document.getElementById('heightCalorie').value);
+            const weight = parseFloat(document.getElementById('weightCalorie').value);
+            const activity = parseFloat(document.getElementById('activity').value);
+            
+            // First calculate BMR
+            let bmr;
+            if (gender === 'male') {
+                bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+            } else {
+                bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+            }
+            
+            // Then multiply by activity factor
+            const maintenanceCalories = bmr * activity;
+            
+            const activityText = document.getElementById('activity').options[document.getElementById('activity').selectedIndex].text;
+            
+            const resultBox = document.getElementById('calorieResult');
+            resultBox.innerHTML = `
+                <h5 class="mb-3">Your Daily Calorie Needs</h5>
+                <div class="d-flex align-items-center mb-3">
+                    <div class="display-4 text-primary me-3">${maintenanceCalories.toFixed(0)}</div>
+                    <div>
+                        <div class="fw-bold">Calories/day</div>
+                        <div class="text-muted small">To maintain weight</div>
+                    </div>
+                </div>
+                <div class="alert alert-info">
+                    <p class="mb-2"><strong>Activity Level:</strong> ${activityText}</p>
+                    <p class="mb-0">Based on your BMR of ${bmr.toFixed(0)} calories multiplied by your activity factor of ${activity}.</p>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6 mb-3">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h6 class="card-title">Weight Loss</h6>
+                                <p class="display-6 text-success">${(maintenanceCalories - 500).toFixed(0)}</p>
+                                <p class="small text-muted mb-0">500 cal deficit/day (≈0.5kg/week)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h6 class="card-title">Weight Gain</h6>
+                                <p class="display-6 text-primary">${(maintenanceCalories + 500).toFixed(0)}</p>
+                                <p class="small text-muted mb-0">500 cal surplus/day (≈0.5kg/week)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            resultBox.classList.add('show');
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Smooth scrolling for anchor links with offset for fixed header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navbarCollapse = document.querySelector('.navbar-collapse.show');
+                    if (navbarCollapse) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                        bsCollapse.hide();
+                    }
+                }
+            });
+        });
+
+        // Show Privacy Policy
+        function showPrivacyPage() {
+            const privacyModal = new bootstrap.Modal(document.getElementById('privacyModal'));
+            privacyModal.show();
+        }
+
+        // Show Terms of Service
+        function showTermsPage() {
+            const termsModal = new bootstrap.Modal(document.getElementById('termsModal'));
+            termsModal.show();
+        }
+
+        // Show Medical Disclaimer
+        function showDisclaimerModal() {
+            const disclaimerModal = new bootstrap.Modal(document.getElementById('disclaimerModal'));
+            disclaimerModal.show();
+        }
+
+        // Show Cookie Policy
+        function showCookiePolicy() {
+            const cookieModal = new bootstrap.Modal(document.getElementById('cookieModal'));
+            cookieModal.show();
+        }
+
+        // Show Contact Page
+        function showContactPage() {
+            const contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
+            contactModal.show();
+        }
+
+        // Initialize tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    </script>
+</body>
+</html>

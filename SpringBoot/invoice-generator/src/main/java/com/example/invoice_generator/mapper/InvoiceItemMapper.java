@@ -5,25 +5,38 @@ import com.example.invoice_generator.entity.Invoice;
 import com.example.invoice_generator.entity.InvoiceItem;
 
 public class InvoiceItemMapper {
-    
-    public static InvoiceItemDTO invoiceItemToDTO(InvoiceItem invoiceItem){
-        return new InvoiceItemDTO(
-                invoiceItem.getId(),
-                invoiceItem.getDescription(),
-                invoiceItem.getQuantity(),
-                invoiceItem.getUnitPrice()
-        );
+
+    public static InvoiceItemDTO toDTO(InvoiceItem invoiceItem) {
+        return InvoiceItemDTO.builder()
+                .id(invoiceItem.getId())
+                .description(invoiceItem.getDescription())
+                .quantity(invoiceItem.getQuantity())
+                .unitPrice(invoiceItem.getUnitPrice())
+                .subtotal(invoiceItem.getSubtotal())
+                .invoiceId(invoiceItem.getInvoice().getId())
+                .build();
     }
 
-    public static InvoiceItem invoiceItemDtoToEntity(InvoiceItemDTO dto, Invoice parentInvoice) {
+    public static InvoiceItem toEntity(InvoiceItemDTO dto, Invoice parentInvoice) {
         InvoiceItem invoiceItem = new InvoiceItem();
         invoiceItem.setId(dto.getId());
         invoiceItem.setDescription(dto.getDescription());
         invoiceItem.setQuantity(dto.getQuantity());
-        invoiceItem.setUnitPrice(dto.getPrice());
-        invoiceItem.setLineTotal(dto.getPrice() * dto.getQuantity());
-        invoiceItem.setInvoice(parentInvoice); // ✅ set back-reference
+
+        // ✅ Use correct field name (unitPrice, not price)
+        Double unitPrice = dto.getUnitPrice();
+        if (unitPrice == null) {
+            throw new IllegalArgumentException("Unit price cannot be null for InvoiceItem");
+        }
+        invoiceItem.setUnitPrice(unitPrice);
+
+        // ✅ subtotal = unitPrice * quantity (handle null safely)
+        invoiceItem.setSubtotal(
+                (dto.getQuantity() != null ? dto.getQuantity() : 0) *
+                        unitPrice
+        );
+
+        invoiceItem.setInvoice(parentInvoice); // back-reference
         return invoiceItem;
     }
-
 }

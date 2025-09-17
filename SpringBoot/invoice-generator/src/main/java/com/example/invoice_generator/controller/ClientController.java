@@ -3,6 +3,8 @@ package com.example.invoice_generator.controller;
 import com.example.invoice_generator.config.ApiResponse;
 import com.example.invoice_generator.dto.ClientDTO;
 import com.example.invoice_generator.service.ClientService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/clients")
+@Tag(name = "Clients" , description = "Manage Clients")
 public class ClientController {
 
     private final ClientService clientService;
@@ -33,6 +36,16 @@ public class ClientController {
     }
 
     // 🟢 Get all clients
+    @Operation(
+            summary = "Get all clients" ,
+            description = "Returns a list of clients in the system ." ,
+            responses = {
+                    @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                            responseCode = "200" ,
+                            description = "List of clients is retrieve successfully !"
+                    )
+            }
+    )
     @GetMapping
     public ResponseEntity<ApiResponse<List<ClientDTO>>> getAllClients(){
         List<ClientDTO> clients = clientService.getAllClients();

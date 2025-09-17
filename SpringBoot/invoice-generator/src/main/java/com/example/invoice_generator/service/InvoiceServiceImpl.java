@@ -50,7 +50,7 @@ public class InvoiceServiceImpl implements InvoiceService{
     public InvoiceDTO updateInvoice(Long id, InvoiceDTO invoiceDTO) {
         Invoice existedInvoice = invoiceRepository.findById(id).orElseThrow(()-> new RuntimeException("Invoice not found !"));
 
-        existedInvoice.setInvoiceNumber(invoiceDTO.getInvoicenumber());
+        existedInvoice.setInvoiceNumber(invoiceDTO.getInvoiceNumber());
         existedInvoice.setDate(invoiceDTO.getInvoiceDate());
         existedInvoice.setDueDate(invoiceDTO.getInvoiceDate().plusDays(30));
         existedInvoice.setTotalAmount(invoiceDTO.getTotal());
@@ -61,7 +61,7 @@ public class InvoiceServiceImpl implements InvoiceService{
                     invoiceDTO.getItems().stream()
                             .map(itemDto ->
                                     InvoiceItemMapper
-                                            .invoiceItemDtoToEntity(itemDto, existedInvoice))
+                                            .toEntity(itemDto, existedInvoice))
                             .collect(Collectors.toList())
             );
         }
