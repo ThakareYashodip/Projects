@@ -252,38 +252,40 @@ class _Screen2State extends State<Screen2> {
             ],
           ),
         ),
-        bottomNavigationBar: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          height: 60,
-          color: Colors.white,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              customText(
-                "Facing an issue? Tap for help.",
-                "Poppins",
-                14,
-                FontWeight.w400,
-                const Color.fromRGBO(40, 40, 40, 0.8),
-              ),
-              Container(
-                height: 35,
-                width: 150,
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(51, 51, 51, 1),
-                  borderRadius: BorderRadius.circular(8),
+        bottomNavigationBar: FittedBox(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            height: 60,
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                customText(
+                  "Facing an issue? Tap for help.",
+                  "Poppins",
+                  14,
+                  FontWeight.w400,
+                  const Color.fromRGBO(40, 40, 40, 0.8),
                 ),
-                child: Center(
-                  child: customText(
-                    "Need Help",
-                    "Inter",
-                    14,
-                    FontWeight.w500,
-                    Colors.white,
+                Container(
+                  height: 35,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(51, 51, 51, 1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Center(
+                    child: customText(
+                      "Need Help",
+                      "Inter",
+                      14,
+                      FontWeight.w500,
+                      Colors.white,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

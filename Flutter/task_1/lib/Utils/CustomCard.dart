@@ -167,25 +167,27 @@ class CustomCard extends StatelessWidget {
                                     right: BorderSide(color: Colors.black12),
                                   ),
                                 ),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    customText(
-                                      "Bank Last updated on",
-                                      "Poppins",
-                                      12.sp,
-                                      FontWeight.w400,
-                                      const Color.fromRGBO(0, 0, 0, 0.7),
-                                    ),
-                                    customText(
-                                      "21 August, 2025",
-                                      "Poppins",
-                                      13.sp,
-                                      FontWeight.w500,
-                                      const Color.fromRGBO(0, 0, 0, 0.9),
-                                    ),
-                                  ],
+                                child: FittedBox(
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      customText(
+                                        "Bank Last updated on",
+                                        "Poppins",
+                                        12.sp,
+                                        FontWeight.w400,
+                                        const Color.fromRGBO(0, 0, 0, 0.7),
+                                      ),
+                                      customText(
+                                        "21 August, 2025",
+                                        "Poppins",
+                                        13.sp,
+                                        FontWeight.w500,
+                                        const Color.fromRGBO(0, 0, 0, 0.9),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Container(
@@ -197,31 +199,33 @@ class CustomCard extends StatelessWidget {
                                     bottom: BorderSide(color: Colors.black12),
                                   ),
                                 ),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    customText(
-                                      "Expected Next Update",
-                                      "Poppins",
-                                      12.sp,
-                                      FontWeight.w400,
-                                      const Color.fromRGBO(0, 0, 0, 0.7),
-                                    ),
-                                    customText(
-                                      "28 August, 2025",
-                                      "Poppins",
-                                      13.sp,
-                                      FontWeight.w500,
-                                      const Color.fromRGBO(0, 0, 0, 0.9),
-                                    ),
-                                  ],
+                                child: FittedBox(
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      customText(
+                                        "Expected Next Update",
+                                        "Poppins",
+                                        12.sp,
+                                        FontWeight.w400,
+                                        const Color.fromRGBO(0, 0, 0, 0.7),
+                                      ),
+                                      customText(
+                                        "28 August, 2025",
+                                        "Poppins",
+                                        13.sp,
+                                        FontWeight.w500,
+                                        const Color.fromRGBO(0, 0, 0, 0.9),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsets.all(4.w),
+                            padding: EdgeInsets.symmetric(vertical: 4.w),
                             child: customText(
                               "⚠️ Update from bank is delayed by 6 days",
                               "Poppins",
