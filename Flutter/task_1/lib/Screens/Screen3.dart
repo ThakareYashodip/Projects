@@ -520,7 +520,7 @@ class _Screen3State extends State<Screen3> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 10.h),
+                          SizedBox(height: 20.h),
                           Row(
                             spacing: 20.w,
                             children: [
@@ -534,29 +534,68 @@ class _Screen3State extends State<Screen3> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10.h),
+                          SizedBox(height: 15.h),
                           SizedBox(
-                            height: 521.h,
+                            height: 900.h,
                             child: GridView.count(
                               physics: NeverScrollableScrollPhysics(),
                               crossAxisCount: 2,
                               crossAxisSpacing: 10,
                               mainAxisSpacing: 10,
-                              children: List.generate(6, (index) {
+                              children: List.generate(10, (index) {
                                 return Container(
                                   height: 122.h,
                                   width: 178.w,
                                   margin: EdgeInsets.symmetric(vertical: 5.h),
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 15.r,
+                                    horizontal: 10.r,
+                                  ),
                                   decoration: BoxDecoration(
-                                    color: Colors.blue.shade100,
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.circular(6),
                                   ),
                                   child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Image.asset(
-                                        "assets/HDFCLOGO.jpg",
+                                        index % 2 == 0
+                                            ? "assets/HDFC_Bank_Logo.png"
+                                            : "assets/ICICI_Bank_Logo.png",
                                         height: 50,
                                         width: 100,
+                                      ),
+                                      customText(
+                                        index % 2 == 0
+                                            ? "Bank Account"
+                                            : "Credit Card",
+                                        "Poppins",
+                                        16.sp,
+                                        FontWeight.w500,
+                                        Color.fromRGBO(40, 40, 40, 1),
+                                      ),
+                                      customText(
+                                        "Earn upto Rs. 20",
+                                        "Poppins",
+                                        16.sp,
+                                        FontWeight.w500,
+                                        Color.fromRGBO(0, 214, 4, 1),
+                                      ),
+                                      Center(
+                                        child: customButton3(
+                                          customText(
+                                            "Sell Now",
+                                            "Poppins",
+                                            12.sp,
+                                            FontWeight.w500,
+                                            Colors.white,
+                                          ),
+                                          context,
+                                          Color.fromRGBO(0, 87, 216, 1),
+                                        ),
                                       ),
                                     ],
                                   ),
