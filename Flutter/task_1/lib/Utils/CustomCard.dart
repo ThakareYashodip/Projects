@@ -1,48 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task_1/Utils/Essentials.dart';
 import 'GradientText.dart';
 
 class CustomCard extends StatelessWidget {
   final bool isEnable;
-  final String name ;
+  final String name;
   const CustomCard({super.key, required this.isEnable, required this.name});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(16),
-      height: 250,
+      margin: EdgeInsets.only(top: 10.h),
+      height: 248.h,
+      width: 364.w,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
         boxShadow: [
           BoxShadow(
-            blurRadius: 12,
+            blurRadius: 12.r,
             blurStyle: BlurStyle.outer,
             color: Color.fromRGBO(0, 0, 0, 0.06),
           ),
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Row(
               children: [
                 customText(
                   name,
                   "Poppins",
-                  16,
+                  16.sp,
                   FontWeight.w500,
                   Colors.black,
                 ),
-                const SizedBox(width: 5),
+                SizedBox(width: 5.w),
                 Icon(
                   Icons.arrow_forward_ios_outlined,
                   color: Colors.black,
-                  size: 15,
+                  size: 15.r,
                 ),
               ],
             ),
@@ -52,8 +54,8 @@ class CustomCard extends StatelessWidget {
                   WidgetSpan(
                     child: GradientText(
                       "Earning Opportunity: Rs. 5,530  ",
-                      style: const TextStyle(
-                        fontSize: 11,
+                      style: TextStyle(
+                        fontSize: 11.sp,
                         fontFamily: "Poppins",
                         fontWeight: FontWeight.w500,
                       ),
@@ -69,88 +71,98 @@ class CustomCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const TextSpan(
+                  TextSpan(
                     text: "|  Sold: 5 Services so far",
                     style: TextStyle(
-                      fontSize: 11,
+                      fontSize: 11.sp,
                       fontFamily: "Poppins",
                       fontWeight: FontWeight.w600,
-                      color: Color.fromRGBO(40, 40, 40, 0.8),
+                      color: const Color.fromRGBO(40, 40, 40, 0.8),
                     ),
                   ),
                 ],
               ),
             ),
-
-            Divider(thickness: 1, color: Color.fromRGBO(40, 40, 40, 0.8)),
+            Divider(
+              thickness: 1.h,
+              color: const Color.fromRGBO(40, 40, 40, 0.8),
+            ),
             RichText(
-              text: const TextSpan(
+              text: TextSpan(
                 text: "SBI Prime  ",
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontFamily: "Poppins",
                   fontWeight: FontWeight.w500,
-                  color: Color.fromRGBO(40, 40, 40, 1),
+                  color: const Color.fromRGBO(40, 40, 40, 1),
                 ),
                 children: [
                   TextSpan(
                     text: "HDFC Premium",
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontFamily: "Poppins",
                       fontWeight: FontWeight.w500,
-                      color: Color.fromRGBO(40, 40, 40, 0.8),
+                      color: const Color.fromRGBO(40, 40, 40, 0.8),
                     ),
                   ),
                 ],
               ),
             ),
             Center(
-              child: Container(
-                width: 350,
-                height: 100,
-                margin: EdgeInsets.symmetric(vertical: 10),
-                padding: isEnable
-                    ? EdgeInsets.symmetric(horizontal: 25, vertical: 20)
-                    : null,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: isEnable
-                      ? Color.fromRGBO(255, 249, 242, 1)
-                      : Color.fromRGBO(0, 87, 216, 0.04),
-                ),
-                child: isEnable
-                    ? Column(
+              child: isEnable
+                  ? Container(
+                      width: 336.w,
+                      height: 82.h,
+                      margin: EdgeInsets.symmetric(vertical: 10.h),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.w,
+                        vertical: 10.h,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.r),
+                        color: const Color.fromRGBO(255, 249, 242, 1),
+                      ),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           customText(
                             "Customer Action Required",
                             "Poppins",
-                            12,
+                            12.sp,
                             FontWeight.w500,
                             Colors.black,
                           ),
                           customText(
                             "Upload income proof to proceed with your application",
                             "Poppins",
-                            12,
+                            12.sp,
                             FontWeight.w400,
                             const Color.fromRGBO(0, 0, 0, 0.7),
                           ),
                         ],
-                      )
-                    : Column(
+                      ),
+                    )
+                  : Container(
+                      height: 93.h,
+                      width: 336.w,
+                      margin: EdgeInsets.symmetric(vertical: 10.h),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.r),
+                        color: const Color.fromRGBO(0, 87, 216, 0.04),
+                      ),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
-                                height: 60,
-                                width: 170,
-                                padding: EdgeInsets.all(10),
+                                height: 61.h,
+                                width: 149.w,
+                                padding: EdgeInsets.all(5.w),
                                 decoration: BoxDecoration(
-                                  border: Border(
+                                  border: const Border(
                                     bottom: BorderSide(color: Colors.black12),
                                     right: BorderSide(color: Colors.black12),
                                   ),
@@ -162,14 +174,14 @@ class CustomCard extends StatelessWidget {
                                     customText(
                                       "Bank Last updated on",
                                       "Poppins",
-                                      12,
+                                      12.sp,
                                       FontWeight.w400,
                                       const Color.fromRGBO(0, 0, 0, 0.7),
                                     ),
                                     customText(
                                       "21 August, 2025",
                                       "Poppins",
-                                      13,
+                                      13.sp,
                                       FontWeight.w500,
                                       const Color.fromRGBO(0, 0, 0, 0.9),
                                     ),
@@ -177,10 +189,10 @@ class CustomCard extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                height: 60,
-                                width: 170,
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
+                                height: 61.h,
+                                width: 149.w,
+                                padding: EdgeInsets.all(5.w),
+                                decoration: const BoxDecoration(
                                   border: Border(
                                     bottom: BorderSide(color: Colors.black12),
                                   ),
@@ -192,14 +204,14 @@ class CustomCard extends StatelessWidget {
                                     customText(
                                       "Expected Next Update",
                                       "Poppins",
-                                      12,
+                                      12.sp,
                                       FontWeight.w400,
                                       const Color.fromRGBO(0, 0, 0, 0.7),
                                     ),
                                     customText(
                                       "28 August, 2025",
                                       "Poppins",
-                                      13,
+                                      13.sp,
                                       FontWeight.w500,
                                       const Color.fromRGBO(0, 0, 0, 0.9),
                                     ),
@@ -209,18 +221,18 @@ class CustomCard extends StatelessWidget {
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsetsGeometry.all(10),
+                            padding: EdgeInsets.all(4.w),
                             child: customText(
                               "⚠️ Update from bank is delayed by 6 days",
                               "Poppins",
-                              12,
+                              12.sp,
                               FontWeight.w400,
                               const Color.fromRGBO(0, 0, 0, 0.7),
                             ),
                           ),
                         ],
                       ),
-              ),
+                    ),
             ),
             isEnable
                 ? Row(
@@ -230,23 +242,23 @@ class CustomCard extends StatelessWidget {
                         customText(
                           "View Details",
                           "Poppins",
-                          13,
+                          13.sp,
                           FontWeight.w500,
-                          Color.fromRGBO(0, 87, 216, 1),
+                          const Color.fromRGBO(0, 87, 216, 1),
                         ),
                         context,
                         Colors.white,
                       ),
                       customButtonWhite(
                         customText(
-                          "Remind Customers",
+                          "Remind Customer",
                           "Poppins",
-                          13,
+                          13.sp,
                           FontWeight.w500,
                           Colors.white,
                         ),
                         context,
-                        Color.fromRGBO(0, 87, 216, 1),
+                        const Color.fromRGBO(0, 87, 216, 1),
                       ),
                     ],
                   )
@@ -254,9 +266,9 @@ class CustomCard extends StatelessWidget {
                     customText(
                       "View Details",
                       "Poppins",
-                      13,
+                      13.sp,
                       FontWeight.w500,
-                      Color.fromRGBO(0, 87, 216, 1),
+                      const Color.fromRGBO(0, 87, 216, 1),
                     ),
                     context,
                     Colors.white,
